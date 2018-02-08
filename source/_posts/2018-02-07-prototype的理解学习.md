@@ -38,7 +38,7 @@ var funExpression = function(){
 funExpression();    // Expression
 ```
 #### 函数对象
-　　与其他对象一致，函数对象中也有名为 `constructor` 的属性，其引用的就是 `Function()` 这个构造函数。它是所有函数对象的基础，一个小插曲，`Object` 是所有对象（包括函数对象）的基础，在 JavaScript 中，任何一个对象都是 Object 的实例，因此，可以修改 Object 这个类型来让所有的对象具有一些通用的属性和方法，修改 Object 类型是通过 **`prototype`** 来完成的:
+　　与其他对象一致，函数对象中也有名为 `constructor` 的属性，其引用的就是 `Function()` 这个构造函数。它是所有函数对象的基础，一个小插曲，`Object` 是所有对象（包括函数对象）的基础，在 JavaScript 中，任何一个对象都是 Object 的实例，因此，可以修改 Object 这个类型来让所有的对象具有一些通用的属性和方法，修改 Object 类型可以通过 **`prototype`** 来完成的:
 ```javascript
 Object.prototype.getType = function(e){ 
   return typeof(e); 
@@ -55,5 +55,27 @@ console.log(a1.getType(a1));
 console.log(f1.getType(function f2(){})); 
 console.log(x.getType("123")); 
 ```
-　　prototype 属性是
+　　prototype 是使用非常广泛的函数属性，当函数作为构造器使用的时候，prototype 就会发挥其作用，由该构造器函数创建的所有对象中都会含有一个该 prototype 属性的引用，并可以当做自身的属性来使用。js 创建对象的时候有一个 `__proto__` 内置属性，用于指向创建它的函数对象。
+
+---
+　　在 JS 中，每个函数都有 `call()` 和 `apply()` 两个方法，它们可以让一个对象去“借用”另一个对象的方法并为己所用。
+```javascript
+//我们先创建了一个对象A，它有一个名字和打招呼的方法
+var A = {
+    name: "A",
+    say: function(who){
+        return ("Hello " + who + ",I am " + this.name );
+    }
+}
+console.log(A.say("B"));//我们用A调用了say()方法
+
+//现在我们来创建一个对象B
+var B = {
+    name: "B"
+}
+//我们发现A的say方法完全可以和B一起用，这里就需要用到call()或者apply();
+console.log(A.say.call(B,"A"));
+console.log(A.say.apply(B,["A"]));
+```
+　　`call()` 和 `apply()` 的区别就是后面的参数形式，call 多个参数的时候使用逗号隔开，apply 则是需要把参数放到一个数组里面。
 
