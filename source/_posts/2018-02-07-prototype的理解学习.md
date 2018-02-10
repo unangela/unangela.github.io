@@ -1,10 +1,10 @@
 ---
 title: js中prototype的理解学习
-date: 2018-02-07 09:20:59
+date: 2018-02-10 15:41:59
 tags: JavaScript
 categories: 笔记
 ---
-　　好记性不如烂笔头，学习笔记的整理，方面以后回顾和总结。如果文章内有什么理解得不对的地方，欢迎在评论指正，共同学习进步。<!--more--> 
+　　好记性不如烂笔头，学习笔记的整理，方便以后回顾。如果文章内有什么理解得不对的地方，欢迎在评论指正，共同学习进步。<!--more--> 
 
 ---
 ### 函数
@@ -116,4 +116,90 @@ fx.prototype = {
 }
 ```
 ### 原型使用
+　　原型属性使我们共享方法方便了很多，当我们创建构造器的时候，我们将可以共享的属性和方法放到原型属性里面，这样在每次使用这个构造器创建实例的时候，就不会重新去声明这些东西，但我们可以通过引用找到这些东西并调用：
+```javascript
+//创建构造器函数
+function Girl(name,age){
+    this.name = name;
+    this.age = age;
+}
+Girl.prototype.sex = "female";
+Girl.prototype.sayHi = function(){
+    console.log("Hi~");
+}
+//使用函数创建实例，调用原型属性
+var rose = new Girl("rose",5);
+console.log(rose.sex); //female
+rose.sayHi(); //Hi~
+```
+　　由于在实例化的时候，并没有重新声明，所以原型具有“实时性”，我们随时可以修改原型属性，这些修改会影响到由该构造器创建的所有对象，包括会影响在修改之前就已经创建了的对象：
+```javascript
+//修改 Girl
+Girl.prototype.sayHi = function(){
+    console.log("Hello~");
+}
+Girl.prototype.sayBye = function(){
+    console.log("Bye~");
+}
+//使用老的实例调用看看
+rose.sayHi(); //Hello~
+rose.sayBye(); //Bye~
+//创建新的实例再试试
+var angela = new Girl("angela",16); 
+angela.sayBye(); //Bye~
+angela.sayHi(); //Hello~
+```
+　　修改原型的时候有一个需要注意的地方，还记得前面说到给原型添加属性有两种方法，那么我们如果在修改原型的时候使用第二种方法，会出现什么呢？
+```javascript
+//使用赋值的方式，尝试同上面一样去修改sayHi和创建sayBye
+Girl.prototype = {
+    constructor : Girl,
+    sayHi : function(){
+        console.log("Hello~");
+    },
+    sayBye : function(){
+        console.log("Bye~");
+    },
+}
+//再来调用一下之前创建的rose
+rose.sayHi(); //Hi~
+rose.sayBye(); //TypeError: rose.sayBye is not a function
+//创建个新的实例试试
+var angela = new Girl("angela",16); 
+angela.sayBye(); //Bye~
+angela.sayHi(); //Hello~
+console.log(angela.sex) //undefined
+```
+　　如果使用赋值的方式去修改原型，此时构造函数的原型对象所指向的就是另一个内存空间，而在此之前所建立的实例仍旧指向原来的空间。所以就会出现上面的结果了。
 ### 原型链
+　　还是继续使用前文的例子吧，我们回到修改原型之前。使用控制台看下实例的结构：  
+　　`console.log(rose);`
+　　<img src="http://wx1.sinaimg.cn/mw690/61b81d32gy1fob4pzix2ej20ab03udfs.jpg"/>
+　　发现一个长得有点像 prototype 的属性名，在里面看到了定义在构造器原型里面的属性和方法。
+　　这个 `__proto__` 是所有**对象**都有的一个属性，指向其构造函数的原型属性 prototype 对象。前文提到**函数**也是一种对象，那么构造器函数也是有 \__proto__ 的，它指向的是什么呢？就是函数的构造器 Function 的 prototype 了。然而对于 **prototype** 来讲，其本身是一个对象，所以也是有 \__proto__ 的，还记得最初讲原型的时候说过原型的 typeof 输出是 `Object`，原型的 \__proto__ 所指向的就是 Object 的 prototype。最终 Object.prototype 的 \__proto__ 属性指向了 null。
+　　这样一层一层走到**Object**，就构成了一条由 `__proto__` 连接起来的原型链。
+　　来看一张图片理解消化一下：
+　　<div style="text-align:center;"><img src="http://wx1.sinaimg.cn/mw690/61b81d32gy1fob9ytrhbzj20eg0gaabg.jpg"/>
+　　[图片来源](https://www.zhihu.com/question/34183746/answer/58155878)
+　　</div>
+
+　　原型链有什么作用呢，当对象在调用某个属性时，如果自身属性里没有找到，JS 就会遍历其原型链，一直往 Object 寻找，最先在哪儿找到，就返回谁（也就是同名情况下的优先级），如果到最后都没有找到，就会返回 undefined。
+```javascript
+Girl.prototype.attr = "attr"
+Object.prototype.attr = "attr1";
+Function.prototype.attr = "attr2";
+
+console.log(rose.attr); //attr
+console.log(rose.constructor.attr); //attr2
+```
+---
+### 附录
+##### 辅助内置方法：
++ *`hasOwnProperty(prop)`* : 判断是否是对象自身的属性（Property），如果是来自原型链的或者不存在，则返回 false
++ *`isPrototypeof(Obj)`* : 判断原型是否是当前对象的原型，如果不在整个原型链上，返回 false
++ *object `instanceof` constructor* : 用来检测 constructor.prototype 是否存在于参数 object 的原型链上
+
+##### 参考文章：
++ [JS中的prototype - 轩脉刃](http://www.cnblogs.com/yjf512/archive/2011/06/03/2071914.html)  
++ [js深入理解构造函数和原型对象 - 快饿死的鱼](http://www.cnblogs.com/thonrt/p/5900510.html)  
++ [instanceof 运算符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof)
