@@ -176,13 +176,10 @@ console.log(angela.sex) //undefined
 　　`console.log(rose);`
 　　<img src="http://wx1.sinaimg.cn/mw690/61b81d32gy1fob4pzix2ej20ab03udfs.jpg"/>
 　　发现一个长得有点像 prototype 的属性名，在里面看到了定义在构造器原型里面的属性和方法。
-　　这个 `__proto__` 是所有**对象**都有的一个属性，指向其构造函数的原型属性 prototype 对象。前文提到**函数**也是一种对象，那么构造器函数也是有 \__proto__ 的，它指向的是什么呢？就是函数的构造器 Function 的 prototype 了。然而对于 **prototype** 来讲，其本身是一个对象，所以也是有 \__proto__ 的，还记得最初讲原型的时候说过原型的 typeof 输出是 `Object`，原型的 \__proto__ 所指向的就是 Object 的 prototype。最终 Object.prototype 的 \__proto__ 属性指向了 null。
+　　这个 `__proto__` 是所有**对象**都有的一个属性，指向其构造函数的原型属性 prototype 对象。前文提到**函数**也是一种对象，那么构造器函数也是有 \__proto\__ 的，它指向的是什么呢？就是函数的构造器 Function 的 prototype 了。然而对于 **prototype** 来讲，其本身是一个对象，所以也是有 \__proto\__ 的，还记得最初讲原型的时候说过原型的 typeof 输出是 `Object`，原型的 \__proto\__ 所指向的就是 Object 的 prototype。最终 Object.prototype 的 \__proto\__ 属性指向了 null。
 　　这样一层一层走到**Object**，就构成了一条由 `__proto__` 连接起来的原型链。
-　　来看一张图片理解消化一下：
-　　<div style="text-align:center;"><img src="http://wx1.sinaimg.cn/mw690/61b81d32gy1fob9ytrhbzj20eg0gaabg.jpg"/>
-　　[图片来源](https://www.zhihu.com/question/34183746/answer/58155878)
-　　</div>
-
+　　来看一张图片理解消化一下（[图片来源](https://www.zhihu.com/question/34183746/answer/58155878)）：
+　　<img src="http://wx1.sinaimg.cn/mw690/61b81d32gy1fob9ytrhbzj20eg0gaabg.jpg"/>
 　　原型链有什么作用呢，当对象在调用某个属性时，如果自身属性里没有找到，JS 就会遍历其原型链，一直往 Object 寻找，最先在哪儿找到，就返回谁（也就是同名情况下的优先级），如果到最后都没有找到，就会返回 undefined。
 ```javascript
 Girl.prototype.attr = "attr"
