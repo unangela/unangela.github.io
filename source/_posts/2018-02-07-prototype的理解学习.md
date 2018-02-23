@@ -2,7 +2,7 @@
 title: js中prototype的理解学习
 date: 2018-02-10 15:41:59
 tags: JavaScript
-categories: 笔记
+categories: 编程
 ---
 　　好记性不如烂笔头，学习笔记的整理，方便以后回顾。如果文章内有什么理解得不对的地方，欢迎在评论指正，共同学习进步。<!--more--> 
 
