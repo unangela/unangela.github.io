@@ -1,4 +1,4 @@
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!--<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>-->
 <div class="copyright">{#
 #}{% set current = date(Date.now(), "YYYY") %}{#
 #}&copy; {% if theme.footer.since and theme.footer.since != current %}{{ theme.footer.since }} &mdash; {% endif %}{#
@@ -21,6 +21,7 @@
   #}</span>
   {% endif %}
 </div>
+<!--
 <div class="powered-by">
 	<i class="fa fa-users"></i>
 	<span id="busuanzi_container_site_uv">
@@ -31,3 +32,4 @@
 	  Page View: <span id="busuanzi_value_site_pv"></span> times
 	</span>
 </div>
+-->
