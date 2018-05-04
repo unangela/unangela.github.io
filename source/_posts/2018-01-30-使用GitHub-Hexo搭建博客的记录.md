@@ -2,7 +2,7 @@
 title: 使用GitHub+Hexo搭建博客的记录
 date: 2018-01-30 11:18:20
 tags: Hexo
-categories: 其他
+categories: 工具
 top: true
 ---
 ### 一、初始？

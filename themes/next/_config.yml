@@ -94,9 +94,10 @@ index_with_subtitle: false
 menu:
   home: / || home
   about: /about/ || coffee
-  categories: /categories/ || th-large
+  #categories: /categories/ || th-large
   tags: /tags/ || tags
   archives: /archives/ || archive
+  postcards：/postcards || image
   commonweal: /404.html/ || heart
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
