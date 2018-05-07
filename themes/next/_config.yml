@@ -97,7 +97,7 @@ menu:
   #categories: /categories/ || th-large
   tags: /tags/ || tags
   archives: /archives/ || archive
-  postcards：/postcards || image
+  postcards: http://unangela.com/postcards || image
   commonweal: /404.html/ || heart
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
