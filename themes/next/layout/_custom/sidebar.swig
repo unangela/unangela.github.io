@@ -7,7 +7,7 @@
 	window.onload = function(){
 		setTimeout(function () {
 			var iframer = document.getElementById("iframer");
-			iframer.setAttribute("src","//music.163.com/outchain/player?type=2&id=442308&auto=0&height=66");
+			iframer.setAttribute("src","//music.163.com/outchain/player?type=2&id=534527725&auto=1&height=66");
 		}, 1000);
 	}
 </script>
