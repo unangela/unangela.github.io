@@ -7,14 +7,14 @@ title: 一朵花与森林
 subtitle: It was born original!
 description: It comes to your mind. Do it !
 author: Una
-avatar: http://wx2.sinaimg.cn/mw690/61b81d32gy1fop5i2fe9sj20ln0lmjsy.jpg
+avatar: http://ww3.sinaimg.cn/mw690/61b81d32jw8f3mnx95v3dj2050050t8q.jpg
 #avatar: /avatar.jpg
 language: zh-Hans
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://unangela.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:

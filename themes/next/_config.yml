@@ -97,7 +97,6 @@ menu:
   #categories: /categories/ || th-large
   tags: /tags/ || tags
   archives: /archives/ || archive
-  postcards: http://unangela.com/postcards || image
   commonweal: /404.html/ || heart
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
@@ -129,11 +128,12 @@ scheme: Pisces
 # Value before `||` delimeter is the target permalink.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
-  GitHub: https://github.com/unangela || github
   Weibo: http://weibo.com/yingwanli || weibo
-  Email: http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=GWBudSAqKVloaDd6dnQ || at
+  GitHub: https://github.com/unangela || github
   #Instagram: https://instagram.com/flowerswap || instagram
-  PostCards: https://www.postcrossing.com/user/Unangela || envelope
+  Photography: http://unangela.com/photography || image
+  Email: http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=GWBudSAqKVloaDd6dnQ || at
+  #PostCards: https://www.postcrossing.com/user/Unangela || envelope
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
@@ -246,8 +246,8 @@ post_wordcount:
   #description: ex. subscribe to my blog by scanning my public wechat account
 
 # Reward
-reward_comment: 奖励我一个棒棒糖吗
-wechatpay: /images/wechatpay.png
+reward_comment: 奖励我一个棒棒糖吗？
+#wechatpay: /images/wechatpay.png
 alipay: /images/alipay.png
 #bitcoin: /images/bitcoin.png
 
