@@ -3,7 +3,7 @@ title: About-2018.01.30更
 date: 2018-01-30 16:59:57
 ---
 ---
-<div align="center"><img src="http://p3cv3cwjr.bkt.clouddn.com/blog/180130/Lhi8aFjj0D.jpg?imageslim" width="65%"></div>
+<div align="center"><img src="https://flower-1254284353.cos.ap-chengdu.myqcloud.com/profile.jpg" width="65%"></div>
 ### 关于我  
 > 杨绛先生说，你的问题主要在于读书不多而想得太多。  
 

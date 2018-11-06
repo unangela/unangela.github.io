@@ -14,7 +14,7 @@ categories: 编程
 　　[<网上的代码>](http://www.qttc.net/201401401.html)
 　　
 **好记性不如烂笔头**
-- python 安装的时候有个勾勾记得勾上 `Add python to environment variables`
+- python 安装的时候有个勾勾记得勾上 `Add python to PATH`
 - pip install 超时，使用镜像
 - `import cairosvg` 的时候报了很多模块找不到的错，到最后装了这么多Package
 <img src="http://wx4.sinaimg.cn/large/61b81d32gy1fua5k9ahwpj20km06jq30.jpg">
