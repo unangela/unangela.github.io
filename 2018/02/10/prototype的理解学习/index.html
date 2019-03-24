@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|FZYaoti:300,300italic,400,400italic,700,700italic|Iosevka:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="好记性不如烂笔头，学习笔记的整理，方便以后回顾。如果文章内有什么理解得不对的地方，欢迎在评论指正，共同学习进步。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js中prototype的理解学习">
+<meta property="og:url" content="http://unangela.com/2018/02/10/prototype的理解学习/index.html">
+<meta property="og:site_name" content="一朵花与森林">
+<meta property="og:description" content="好记性不如烂笔头，学习笔记的整理，方便以后回顾。如果文章内有什么理解得不对的地方，欢迎在评论指正，共同学习进步。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://wx1.sinaimg.cn/mw690/61b81d32gy1fob4pzix2ej20ab03udfs.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/mw690/61b81d32gy1fob9ytrhbzj20eg0gaabg.jpg">
+<meta property="og:updated_time" content="2019-03-20T14:46:02.071Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js中prototype的理解学习">
+<meta name="twitter:description" content="好记性不如烂笔头，学习笔记的整理，方便以后回顾。如果文章内有什么理解得不对的地方，欢迎在评论指正，共同学习进步。">
+<meta name="twitter:image" content="http://wx1.sinaimg.cn/mw690/61b81d32gy1fob4pzix2ej20ab03udfs.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://unangela.com/2018/02/10/prototype的理解学习/">
+
+
+
+
+
+  <title>js中prototype的理解学习 | 一朵花与森林</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一朵花与森林</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">And you it`s only seeds.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-coffee"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heart"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://unangela.com/2018/02/10/prototype的理解学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Una">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://ww3.sinaimg.cn/mw690/61b81d32jw8f3mnx95v3dj2050050t8q.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一朵花与森林">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js中prototype的理解学习</h1>
+        
+
+        <div class="post-meta">
+			
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-10T15:41:59+08:00">
+                2018-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">热度
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>℃
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>　　好记性不如烂笔头，学习笔记的整理，方便以后回顾。如果文章内有什么理解得不对的地方，欢迎在评论指正，共同学习进步。<a id="more"></a> </p>
+<hr>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>　　在理解原型之前，我们要先来理解 js 的函数 <code>function()</code> , javascript 里面，函数也是一种对象。我们创建函数有三种方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//function declaration 函数声明</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a+b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//function expression 函数表达式</span></span><br><span class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Function()构造器，尽量避免使用这种方式</span></span><br><span class="line"><span class="keyword">var</span> sum = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'return a+b;'</span>);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>函数声明和函数表达式的区别在于，用函数声明创建的函数可以在函数定义之前就进行调用，而用函数表达式创建的函数不能在函数被赋值之前进行调用：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">funDeclaration();   <span class="comment">// Declaration</span></span><br><span class="line">funExpression();    <span class="comment">// TypeError: funExpression is not a function</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">funDeclaration</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">"Declaration"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> funExpression = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Expression"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">funExpression();    <span class="comment">// Expression</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="函数对象"><a href="#函数对象" class="headerlink" title="函数对象"></a>函数对象</h3><p>　　与其他对象一致，函数对象中也有名为 <code>constructor</code> 的属性，其引用的就是 <code>Function()</code> 这个构造函数。它是所有函数对象的基础，一个小插曲，Object 是所有对象（包括函数对象）的基础，在 JavaScript 中，任何一个对象都是 Object 的实例，因此，可以修改 Object 这个类型来让所有的对象具有一些通用的属性和方法，修改 Object 类型就可以通过 <code>prototype</code> 来完成的:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.getType = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123; </span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">typeof</span>(e); </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a1 = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">var</span> a2 = [];</span><br><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">a,b</span>)</span>&#123; </span><br><span class="line">  <span class="keyword">return</span> a+b; </span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(getType(<span class="literal">true</span>));</span><br><span class="line"><span class="built_in">console</span>.log(a1.getType(a1)); </span><br><span class="line"><span class="comment">//console.log(a2 instanceof Array)//数组的类型要用instanceof来判断，typeof有局限性</span></span><br><span class="line"><span class="built_in">console</span>.log(f1.getType(<span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;&#125;)); </span><br><span class="line"><span class="built_in">console</span>.log(x.getType(<span class="string">"123"</span>));</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>prototype 是使用非常广泛的函数属性，当函数作为构造器使用的时候，prototype 就会发挥其作用，由该构造器函数创建的所有对象中都会含有一个该 prototype 属性的引用，并可以当做自身的属性来使用。js 创建对象的时候有一个 <code>__proto__</code> 内置属性，用于指向创建它的函数对象。</p>
+</blockquote>
+<p>　　也和其他对象一致，函数也有自己的对象方法。比如，JS 中的每个函数都有 <code>call()</code> 和 <code>apply()</code> 两个方法，它们可以让一个对象去“借用”另一个对象的方法并为己所用。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//我们先创建了一个对象A，它有一个名字和打招呼的方法</span></span><br><span class="line"><span class="keyword">var</span> A = &#123;</span><br><span class="line">    name: <span class="string">"A"</span>,</span><br><span class="line">    say: <span class="function"><span class="keyword">function</span>(<span class="params">who</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">"Hello "</span> + who + <span class="string">",I am "</span> + <span class="keyword">this</span>.name );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(A.say(<span class="string">"B"</span>));<span class="comment">//我们用A调用了say()方法</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//现在我们来创建一个对象B</span></span><br><span class="line"><span class="keyword">var</span> B = &#123;</span><br><span class="line">    name: <span class="string">"B"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//我们发现A的say方法完全可以和B一起用，这里就需要用到call()或者apply();</span></span><br><span class="line"><span class="built_in">console</span>.log(A.say.call(B,<span class="string">"A"</span>));</span><br><span class="line"><span class="built_in">console</span>.log(A.say.apply(B,[<span class="string">"A"</span>]));</span><br></pre></td></tr></table></figure></p>
+<p>　　<code>call()</code> 和 <code>apply()</code> 的区别就是后面的参数形式。需要传递多个参数的时候 call 使用逗号隔开，例 <code>X.fuc.call(Y,&quot;参数1&quot;,&quot;参数2&quot;,&quot;参数3&quot;)</code>，apply 则是需要把参数放到一个数组里面，如 <code>X.fuc.apply(Y,[&quot;参数1&quot;,&quot;参数2&quot;,&quot;参数3&quot;])</code> 。这两种写法是等效的。</p>
+<hr>
+<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p>　　如前文说的那样，我们知道了在函数被创建的时候就有一些默认的属性，这些属性中就包括 prototype ，它的初始值是一个空的对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fx</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> fx.prototype) <span class="comment">//Object</span></span><br></pre></td></tr></table></figure></p>
+<p>　　我们可以为它添加新的属性和方法，它们不会对自己的函数本身造成影响：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法一：通过改变对象的属性来添加</span></span><br><span class="line">fx.prototype.type = <span class="string">"Math"</span>;</span><br><span class="line">fx.prototype.info = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="string">"My type is "</span>+<span class="keyword">this</span>.type);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//方法二：或者创建一个新的对象赋值</span></span><br><span class="line">fx.prototype = &#123;</span><br><span class="line">    type : <span class="string">"Math"</span>,</span><br><span class="line">    info : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">"My type is "</span>+<span class="keyword">this</span>.type)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试</span></span><br><span class="line"><span class="built_in">console</span>.log(fx.info()) <span class="comment">//TypeError: fx.info is not a function</span></span><br><span class="line"><span class="built_in">console</span>.log(fx.prototype.info()) <span class="comment">//My type is Math</span></span><br></pre></td></tr></table></figure></p>
+<p>　　方法二看起来要简单方便一点，但在使用的时候要注意，赋值的方式其实是改变了 prototype 本身的性质。一个函数在被创建时，它的 prototype 属性也被创建，且该原型对象的 constructor属性指向该函数。当使用一个新的对象改写原型对象时，其 constructor 属性将被置为泛用对象Object。为了避免这一点，需要在改写原型对象的时候手动重置 constructor。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fx.prototype = &#123;</span><br><span class="line">    <span class="keyword">constructor</span> : fx,</span><br><span class="line">    type : "Math",</span><br><span class="line">    info : function()&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">"My type is "</span>+<span class="keyword">this</span>.type)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="原型使用"><a href="#原型使用" class="headerlink" title="原型使用"></a>原型使用</h3><p>　　原型属性使我们共享方法方便了很多，当我们创建构造器的时候，我们将可以共享的属性和方法放到原型属性里面，这样在每次使用这个构造器创建实例的时候，就不会重新去声明这些东西，但我们可以通过引用找到这些东西并调用：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建构造器函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Girl</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Girl.prototype.sex = <span class="string">"female"</span>;</span><br><span class="line">Girl.prototype.sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Hi~"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用函数创建实例，调用原型属性</span></span><br><span class="line"><span class="keyword">var</span> rose = <span class="keyword">new</span> Girl(<span class="string">"rose"</span>,<span class="number">5</span>);</span><br><span class="line"><span class="built_in">console</span>.log(rose.sex); <span class="comment">//female</span></span><br><span class="line">rose.sayHi(); <span class="comment">//Hi~</span></span><br></pre></td></tr></table></figure></p>
+<p>　　由于在实例化的时候，并没有重新声明，所以原型具有“实时性”，我们随时可以修改原型属性，这些修改会影响到由该构造器创建的所有对象，包括会影响在修改之前就已经创建了的对象：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//修改 Girl</span></span><br><span class="line">Girl.prototype.sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Hello~"</span>);</span><br><span class="line">&#125;</span><br><span class="line">Girl.prototype.sayBye = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Bye~"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用老的实例调用看看</span></span><br><span class="line">rose.sayHi(); <span class="comment">//Hello~</span></span><br><span class="line">rose.sayBye(); <span class="comment">//Bye~</span></span><br><span class="line"><span class="comment">//创建新的实例再试试</span></span><br><span class="line"><span class="keyword">var</span> angela = <span class="keyword">new</span> Girl(<span class="string">"angela"</span>,<span class="number">16</span>); </span><br><span class="line">angela.sayBye(); <span class="comment">//Bye~</span></span><br><span class="line">angela.sayHi(); <span class="comment">//Hello~</span></span><br></pre></td></tr></table></figure></p>
+<p>　　修改原型的时候有一个需要注意的地方，还记得前面说到给原型添加属性有两种方法，那么我们如果在修改原型的时候使用第二种方法，会出现什么呢？<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用赋值的方式，尝试同上面一样去修改sayHi和创建sayBye</span></span><br><span class="line">Girl.prototype = &#123;</span><br><span class="line">    <span class="keyword">constructor</span> : Girl,</span><br><span class="line">    sayHi : function()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Hello~"</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    sayBye : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Bye~"</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//再来调用一下之前创建的rose</span></span><br><span class="line">rose.sayHi(); <span class="comment">//Hi~</span></span><br><span class="line">rose.sayBye(); <span class="comment">//TypeError: rose.sayBye is not a function</span></span><br><span class="line"><span class="comment">//创建个新的实例试试</span></span><br><span class="line"><span class="keyword">var</span> angela = <span class="keyword">new</span> Girl(<span class="string">"angela"</span>,<span class="number">16</span>); </span><br><span class="line">angela.sayBye(); <span class="comment">//Bye~</span></span><br><span class="line">angela.sayHi(); <span class="comment">//Hello~</span></span><br><span class="line"><span class="built_in">console</span>.log(angela.sex) <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure></p>
+<p>　　如果使用赋值的方式去修改原型，此时构造函数的原型对象所指向的就是另一个内存空间，而在此之前所建立的实例仍旧指向原来的空间。所以就会出现上面的结果了。</p>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>　　还是继续使用前文的例子吧，我们回到修改原型之前。使用控制台看下实例的结构：<br>　　<code>console.log(rose);</code><br>　　<img src="http://wx1.sinaimg.cn/mw690/61b81d32gy1fob4pzix2ej20ab03udfs.jpg"><br>　　发现一个长得有点像 prototype 的属性名，在里面看到了定义在构造器原型里面的属性和方法。<br>　　这个 <code>__proto__</code> 是所有<strong>对象</strong>都有的一个属性，指向其构造函数的原型属性 prototype 对象。前文提到<strong>函数</strong>也是一种对象，那么构造器函数也是有 __proto__ 的，它指向的是什么呢？就是函数的构造器 Function 的 prototype 了。然而对于 <strong>prototype</strong> 来讲，其本身是一个对象，所以也是有 __proto__ 的，还记得最初讲原型的时候说过原型的 typeof 输出是 <code>Object</code>，原型的 __proto__ 所指向的就是 Object 的 prototype。最终 Object.prototype 的 __proto__ 属性指向了 null。<br>　　这样一层一层走到<strong>Object</strong>，就构成了一条由 <code>__proto__</code> 连接起来的原型链。<br>　　来看一张图片理解消化一下（<a href="https://www.zhihu.com/question/34183746/answer/58155878" target="_blank" rel="noopener">图片来源</a>）：<br>　　<img src="http://wx1.sinaimg.cn/mw690/61b81d32gy1fob9ytrhbzj20eg0gaabg.jpg"><br>　　原型链有什么作用呢，当对象在调用某个属性时，如果自身属性里没有找到，JS 就会遍历其原型链，一直往 Object 寻找，最先在哪儿找到，就返回谁（也就是同名情况下的优先级），如果到最后都没有找到，就会返回 undefined。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Girl.prototype.attr = <span class="string">"attr"</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.attr = <span class="string">"attr1"</span>;</span><br><span class="line"><span class="built_in">Function</span>.prototype.attr = <span class="string">"attr2"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(rose.attr); <span class="comment">//attr</span></span><br><span class="line"><span class="built_in">console</span>.log(rose.constructor.attr); <span class="comment">//attr2</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h3><h5 id="辅助内置方法："><a href="#辅助内置方法：" class="headerlink" title="辅助内置方法："></a>辅助内置方法：</h5><ul>
+<li><em><code>hasOwnProperty(prop)</code></em> : 判断是否是对象自身的属性（Property），如果是来自原型链的或者不存在，则返回 false</li>
+<li><em><code>isPrototypeof(Obj)</code></em> : 判断原型是否是当前对象的原型，如果不在整个原型链上，返回 false</li>
+<li><em>object <code>instanceof</code> constructor</em> : 用来检测 constructor.prototype 是否存在于参数 object 的原型链上</li>
+</ul>
+<h5 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h5><ul>
+<li><a href="http://www.cnblogs.com/yjf512/archive/2011/06/03/2071914.html" target="_blank" rel="noopener">JS中的prototype - 轩脉刃</a>  </li>
+<li><a href="http://www.cnblogs.com/thonrt/p/5900510.html" target="_blank" rel="noopener">js深入理解构造函数和原型对象 - 快饿死的鱼</a>  </li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof" target="_blank" rel="noopener">instanceof 运算符</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+    <div>
+	  
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------End of this article, thanks for your reading. <i class="fa fa-heart"></i>-------------</div>
+    
+</div>
+	  
+	</div>
+	
+	
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>奖励我一个棒棒糖吗？</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Una 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" <i class="fa fa-tag"> JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/08/一条神奇的js代码/" rel="next" title="一条神奇的js代码">
+                <i class="fa fa-chevron-left"></i> 一条神奇的js代码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/12/关于备份/" rel="prev" title="关于 Hexo 的备份">
+                关于 Hexo 的备份 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt"></span>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_weixin"></a>
+<a class="jiathis_button_douban"></a>
+<a class="jiathis_button_cqq"></a>
+<a class="jiathis_button_copy"></a>
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  siteNum:6,
+  sm:"fav,email,tieba,gmail,evernote,youdao",
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzY5MS8xMDI0Ng=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://ww3.sinaimg.cn/mw690/61b81d32jw8f3mnx95v3dj2050050t8q.jpg" alt="Una">
+            
+              <p class="site-author-name" itemprop="name">Una</p>
+              <p class="site-description motion-element" itemprop="description">A boring girl.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/yingwanli" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/unangela" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://unangela.com/photography" target="_blank" title="Photography">
+                      
+                        <i class="fa fa-fw fa-image"></i>Photography</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=GWBudSAqKVloaDd6dnQ" target="_blank" title="Email">
+                      
+                        <i class="fa fa-fw fa-at"></i>Email</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+		  <br>
+          <!--网易云音乐外嵌iframe-->
+<div>
+	<iframe id="iframer" frameborder="no" border="0" marginwidth="0" marginheight="0" width="220" height="52" src></iframe>
+</div>
+
+<script language="javascript" type="text/javascript">
+	window.onload = function(){
+		setTimeout(function () {
+			var iframer = document.getElementById("iframer");
+			iframer.setAttribute("src","//music.163.com/outchain/player?type=2&id=38358214&auto=1&height=32");
+		}, 1000);
+	}
+</script>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">1.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数对象"><span class="nav-number">2.</span> <span class="nav-text">函数对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型"><span class="nav-number">3.</span> <span class="nav-text">原型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型使用"><span class="nav-number">4.</span> <span class="nav-text">原型使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型链"><span class="nav-number">5.</span> <span class="nav-text">原型链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#附录"><span class="nav-number">6.</span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#辅助内置方法："><span class="nav-number">6.0.1.</span> <span class="nav-text">辅助内置方法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参考文章："><span class="nav-number">6.0.2.</span> <span class="nav-text">参考文章：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <!--<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>-->
+<div class="copyright">&copy; 2018.01.26 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Una.ywl</span>
+
+  
+</div>
+<!--
+<div class="powered-by">
+	<i class="fa fa-users"></i>
+	<span id="busuanzi_container_site_uv">
+	  You are the NO.<span id="busuanzi_value_site_uv"></span> visitor of this site , welcome !
+	</span>
+	<i class="fa fa-eye"></i>
+	<span id="busuanzi_container_site_pv">
+	  Page View: <span id="busuanzi_value_site_pv"></span> times
+	</span>
+</div>
+-->
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> You are the NO.
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      visitor of this site , Welcome !
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> Total views
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      times
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+</html>
