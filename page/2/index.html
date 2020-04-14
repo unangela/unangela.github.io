@@ -167,7 +167,7 @@
     <link itemprop="mainEntityOfPage" href="http://unangela.com/2018/02/08/一条神奇的js代码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Una">
       <meta itemprop="description" content="A boring girl.">
     </span>
@@ -190,13 +190,6 @@
 
               <time title="Created: 2018-02-08 17:38:15" itemprop="dateCreated datePublished" datetime="2018-02-08T17:38:15+08:00">2018-02-08</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-14 09:22:53" itemprop="dateModified" datetime="2020-04-14T09:22:53+08:00">2020-04-14</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -242,7 +235,7 @@
     <link itemprop="mainEntityOfPage" href="http://unangela.com/2018/02/06/年终总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Una">
       <meta itemprop="description" content="A boring girl.">
     </span>
@@ -265,13 +258,6 @@
 
               <time title="Created: 2018-02-06 17:26:36" itemprop="dateCreated datePublished" datetime="2018-02-06T17:26:36+08:00">2018-02-06</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-14 09:22:53" itemprop="dateModified" datetime="2020-04-14T09:22:53+08:00">2020-04-14</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -323,7 +309,7 @@
     <link itemprop="mainEntityOfPage" href="http://unangela.com/2018/02/01/抽奖转盘H5实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Una">
       <meta itemprop="description" content="A boring girl.">
     </span>
@@ -346,13 +332,6 @@
 
               <time title="Created: 2018-02-01 09:51:21" itemprop="dateCreated datePublished" datetime="2018-02-01T09:51:21+08:00">2018-02-01</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-04-14 09:22:53" itemprop="dateModified" datetime="2020-04-14T09:22:53+08:00">2020-04-14</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -458,6 +437,7 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Una" src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">Una</p>
   <div class="site-description" itemprop="description">A boring girl.</div>
 </div>
@@ -496,7 +476,19 @@
   </div>
 
 
+<!--网易云音乐外嵌iframe-->
+<div>
+	<iframe id="iframer" frameborder="no" border="0" marginwidth="0" marginheight="0" width="220" height="52" src></iframe>
+</div>
 
+<script language="javascript" type="text/javascript">
+	window.onload = function(){
+		setTimeout(function () {
+			var iframer = document.getElementById("iframer");
+			iframer.setAttribute("src","//music.163.com/outchain/player?type=2&id=38358214&auto=1&height=32");
+		}, 1000);
+	}
+</script>
       </div>
 
     </div>
