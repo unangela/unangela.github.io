@@ -1,401 +1,70 @@
-<!DOCTYPE html>
-<html lang="zh-Hans">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.8.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+{% extends '_layout.swig' %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
-<link rel="stylesheet" href="/css/main.css">
+  {% block title %}{#
+  #}{% set page_title_suffix = ' | ' + config.title %}{#
 
+  #}{% if page.type === "categories" and not page.title %}{#
+    #}{{ __('title.category') + page_title_suffix }}{#
+  #}{% elif page.type === "tags" and not page.title %}{#
+    #}{{ __('title.tag') + page_title_suffix }}{#
+  #}{% else %}{#
+    #}{{ page.title + page_title_suffix }}{#
+  #}{% endif %}{#
+#}{% endblock %}
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+{% block page_class %}page-post-detail{% endblock %}
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"unangela.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
+{% block content %}
 
-  <meta name="description" content="关于我 杨绛先生说，你的问题主要在于读书不多而想得太多。    95天秤，喜笑，怀揣着一颗永远十六岁的少女心目前在成都工作，从未停止热爱生活，步履不停地…有感兴趣的事情就去尝试，有的事情坚持了很久，有的事情可能只有三分钟热度但每一件事儿都很享受当下，哪怕真的只有三分钟，那也一定是有意义的   坚持写手帐已经是第四个年头enjoy pen and ink我不记得四年前的今天我在干什么，但本子记得">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About-2018.01.30更">
-<meta property="og:url" content="http://unangela.com/about/index.html">
-<meta property="og:site_name" content="一朵花与森林">
-<meta property="og:description" content="关于我 杨绛先生说，你的问题主要在于读书不多而想得太多。    95天秤，喜笑，怀揣着一颗永远十六岁的少女心目前在成都工作，从未停止热爱生活，步履不停地…有感兴趣的事情就去尝试，有的事情坚持了很久，有的事情可能只有三分钟热度但每一件事儿都很享受当下，哪怕真的只有三分钟，那也一定是有意义的   坚持写手帐已经是第四个年头enjoy pen and ink我不记得四年前的今天我在干什么，但本子记得">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://flower-1254284353.cos.ap-chengdu.myqcloud.com/profile.jpg">
-<meta property="og:updated_time" content="2020-04-14T01:22:53.867Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About-2018.01.30更">
-<meta name="twitter:description" content="关于我 杨绛先生说，你的问题主要在于读书不多而想得太多。    95天秤，喜笑，怀揣着一颗永远十六岁的少女心目前在成都工作，从未停止热爱生活，步履不停地…有感兴趣的事情就去尝试，有的事情坚持了很久，有的事情可能只有三分钟热度但每一件事儿都很享受当下，哪怕真的只有三分钟，那也一定是有意义的   坚持写手帐已经是第四个年头enjoy pen and ink我不记得四年前的今天我在干什么，但本子记得">
-<meta name="twitter:image" content="https://flower-1254284353.cos.ap-chengdu.myqcloud.com/profile.jpg">
-
-<link rel="canonical" href="http://unangela.com/about/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : false,
-    lang   : 'zh-Hans'
-  };
-</script>
-
-  <title>About-2018.01.30更 | 一朵花与森林
-</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">一朵花与森林</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">And you it`s only seeds.</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
-        <li class="menu-item menu-item-commonweal">
-
-    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-  
-  
-
-          <div class="content page posts-expand">
-            
-
-    
-    
-    
-    <div class="post-block" lang="zh-Hans">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">About-2018.01.30更
-</h1>
-
-<div class="post-meta">
-  
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <hr>
-<p><div align="center"><img src="https://flower-1254284353.cos.ap-chengdu.myqcloud.com/profile.jpg" width="65%"></div></p>
-<h3 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h3><blockquote>
-<p>杨绛先生说，你的问题主要在于读书不多而想得太多。  </p>
-</blockquote>
-<p>95天秤，喜笑，怀揣着一颗永远十六岁的少女心<br>目前在成都工作，从未停止热爱生活，步履不停地…<br>有感兴趣的事情就去尝试，有的事情坚持了很久，有的事情可能只有三分钟热度<br>但每一件事儿都很享受当下，哪怕真的只有三分钟，那也一定是有意义的  </p>
-<p>坚持写手帐已经是第四个年头<br>enjoy pen and ink<br>我不记得四年前的今天我在干什么，但本子记得<br>于我来说，记录这件事情本身就是很快乐的<br>偶尔在写字的时候，我也会想等到老了看到这一页，会是什么心情</p>
-<p>热爱收集明信片，工作之后的地址邮路一直不太靠谱而被落下了<br>家里的盒子里应该有近千张，来自世界各地<br>每一张明信片都有它的故事，漂洋过海来见你<br>我之后会在博客慢慢分享一些<br>当然，明信片也还会一直写下去<br>虽然没有曾经那么勤快了</p>
-<p>喜欢张韶涵，第十四年<br>很难用言语表达，很骄傲<br>是张韶涵精神一直鞭策自己成长<br>也希望能将正能量传递给更多的人  </p>
-<p>学习使人进步，每一门技能总有它能发光的地方<br>现在在互联网行业摸爬滚打<br>还没有找到喜欢并合适的工作支点<br>一直在各种尝试与学习<br>偶尔安于现状，偶尔居安思危<br>快乐至上，永远向前 ❤</p>
-<hr>
-<h3 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h3><ul>
-<li><strong>2018.01.26</strong><br>–本站诞生</li>
-<li><strong>2018.01.29</strong><br>–找了一朵小花作icon<br>–完成网站基本的页面逻辑<br>–点击鼠标冒小心心<br>–添加背景音乐</li>
-<li><strong>2018.01.30</strong><br>–上传了第一篇博客<br>–添加评论功能<br>–添加分享功能<br>–添加打赏功能<br>–上传About  </li>
-<li><strong>2018.02.09</strong><br>–新增文章置顶的功能<br>–添加页面加载时的小圆点  </li>
-<li><strong>2018.02.24</strong><br>–显示单文章的浏览量  </li>
-<li><strong>2018.04.02</strong><br>–减小了图片在文章中的前后间距<br>–还改了主页文章的间距，变得更紧致<br>–添加了发送邮件的按钮，欢迎来信  </li>
-<li><strong>2018.05.10</strong><br>–导航条新增“明信片”<br>–修改了个人简介<br>–It comes to your mind. Do it !</li>
-<li>ing…</li>
-</ul>
-<hr>
-
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
-
-
+  <div id="posts" class="posts-expand">
+    {##################}
+    {### PAGE BLOCK ###}
+    {##################}
+    <div class="post-block page">
+      {% include '_partials/page-header.swig' %}
+      {#################}
+      {### PAGE BODY ###}
+      {#################}
+      <div class="post-body{% if theme.han %} han-init-context{% endif %}{% if page.direction && page.direction.toLowerCase() === 'rtl' %} rtl{% endif %}">
+        {# tagcloud page support #}
+        {% if page.type === "tags" %}
+          <div class="tag-cloud">
+            <div class="tag-cloud-title">
+                {{ _p('counter.tag_cloud', site.tags.length) }}
+            </div>
+            <div class="tag-cloud-tags">
+              {{ tagcloud({min_font: 12, max_font: 30, amount: 300, color: true, start_color: '#ccc', end_color: '#111'}) }}
+            </div>
           </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于我"><span class="nav-number">1.</span> <span class="nav-text">关于我</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于本站"><span class="nav-number">2.</span> <span class="nav-text">关于本站</span></a></li></ol></div>
+        {% elif page.type === 'categories' %}
+          <div class="category-all-page">
+            <div class="category-all-title">
+                {{ _p('counter.categories', site.categories.length) }}
+            </div>
+            <div class="category-all">
+              {{ list_categories() }}
+            </div>
+          </div>
+        {% else %}
+          {{ page.content }}
+        {% endif %}
       </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Una" src="/images/avatar.jpg">
-  <p class="site-author-name" itemprop="name">Una</p>
-  <div class="site-description" itemprop="description">A boring girl.</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">13</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-        <span class="site-state-item-count">5</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">9</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/unangela" title="GitHub → https://github.com/unangela" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=GWBudSAqKVloaDd6dnQ" title="E-Mail → http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=GWBudSAqKVloaDd6dnQ" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="http://weibo.com/yingwanli" title="Weibo → http://weibo.com/yingwanli" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
-      </span>
-  </div>
-
-
-<!--网易云音乐外嵌iframe-->
-<div>
-	<iframe id="iframer" frameborder="no" border="0" marginwidth="0" marginheight="0" width="220" height="52" src></iframe>
-</div>
-
-<script language="javascript" type="text/javascript">
-	window.onload = function(){
-		setTimeout(function () {
-			var iframer = document.getElementById("iframer");
-			iframer.setAttribute("src","//music.163.com/outchain/player?type=2&id=38358214&auto=1&height=32");
-		}, 1000);
-	}
-</script>
-      </div>
-
+      {#####################}
+      {### END PAGE BODY ###}
+      {#####################}
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 2018.01.26 – 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fal fa-heart-rate"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Una</span>
-</div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
+    {######################}
+    {### END PAGE BLOCK ###}
+    {######################}
   </div>
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/pisces.js"></script>
-<script src="/js/next-boot.js"></script>
+{% endblock %}
 
+{% block sidebar %}
+  {{ sidebar_template.render(false) }}
+{% endblock %}
 
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}
