@@ -1,70 +1,230 @@
-{% extends '_layout.swig' %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
 
-  {% block title %}{#
-  #}{% set page_title_suffix = ' | ' + config.title %}{#
+  
+  <title>About-2018.01.30更 | 一朵花与森林</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="### 关于我   &gt; 杨绛先生说，你的问题主要在于读书不多而想得太多。    95天秤，喜笑，怀揣着一颗永远十六岁的少女心base成都，从未停止热爱生活，步履不停地…有感兴趣的事情就去尝试，有的事情坚持了很久，有的事情可能只有三分钟热度但每一件事儿都很享受当下，哪怕真的只有三分钟，那也一定是有意义的   学习使人进步，每一门技能总有它能发光的地方一直在各种尝试与学习偶尔安于现状，偶尔居安思危">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About-2018.01.30更">
+<meta property="og:url" content="http://unangela.com/about/index.html">
+<meta property="og:site_name" content="一朵花与森林">
+<meta property="og:description" content="### 关于我   &gt; 杨绛先生说，你的问题主要在于读书不多而想得太多。    95天秤，喜笑，怀揣着一颗永远十六岁的少女心base成都，从未停止热爱生活，步履不停地…有感兴趣的事情就去尝试，有的事情坚持了很久，有的事情可能只有三分钟热度但每一件事儿都很享受当下，哪怕真的只有三分钟，那也一定是有意义的   学习使人进步，每一门技能总有它能发光的地方一直在各种尝试与学习偶尔安于现状，偶尔居安思危">
+<meta property="og:locale">
+<meta property="og:image" content="https://flower-1254284353.cos.ap-chengdu.myqcloud.com/profile.jpg">
+<meta property="article:published_time" content="2018-01-30T08:59:57.000Z">
+<meta property="article:modified_time" content="2020-10-15T02:27:26.586Z">
+<meta property="article:author" content="Una">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://flower-1254284353.cos.ap-chengdu.myqcloud.com/profile.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="一朵花与森林" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  #}{% if page.type === "categories" and not page.title %}{#
-    #}{{ __('title.category') + page_title_suffix }}{#
-  #}{% elif page.type === "tags" and not page.title %}{#
-    #}{{ __('title.tag') + page_title_suffix }}{#
-  #}{% else %}{#
-    #}{{ page.title + page_title_suffix }}{#
-  #}{% endif %}{#
-#}{% endblock %}
+<meta name="generator" content="Hexo 5.2.0"></head>
 
-{% block page_class %}page-post-detail{% endblock %}
-
-{% block content %}
-
-  <div id="posts" class="posts-expand">
-    {##################}
-    {### PAGE BLOCK ###}
-    {##################}
-    <div class="post-block page">
-      {% include '_partials/page-header.swig' %}
-      {#################}
-      {### PAGE BODY ###}
-      {#################}
-      <div class="post-body{% if theme.han %} han-init-context{% endif %}{% if page.direction && page.direction.toLowerCase() === 'rtl' %} rtl{% endif %}">
-        {# tagcloud page support #}
-        {% if page.type === "tags" %}
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                {{ _p('counter.tag_cloud', site.tags.length) }}
-            </div>
-            <div class="tag-cloud-tags">
-              {{ tagcloud({min_font: 12, max_font: 30, amount: 300, color: true, start_color: '#ccc', end_color: '#111'}) }}
-            </div>
-          </div>
-        {% elif page.type === 'categories' %}
-          <div class="category-all-page">
-            <div class="category-all-title">
-                {{ _p('counter.categories', site.categories.length) }}
-            </div>
-            <div class="category-all">
-              {{ list_categories() }}
-            </div>
-          </div>
-        {% else %}
-          {{ page.content }}
-        {% endif %}
-      </div>
-      {#####################}
-      {### END PAGE BODY ###}
-      {#####################}
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">一朵花与森林</a>
+      </h1>
+      
     </div>
-    {######################}
-    {### END PAGE BLOCK ###}
-    {######################}
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://unangela.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/about/index.html" class="article-date">
+  <time datetime="2018-01-30T08:59:57.000Z" itemprop="datePublished">2018-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      About-2018.01.30更
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<div align="center"><img src="https://flower-1254284353.cos.ap-chengdu.myqcloud.com/profile.jpg" width="65%"></div>
+### 关于我  
+> 杨绛先生说，你的问题主要在于读书不多而想得太多。  
+
+<p>95天秤，喜笑，怀揣着一颗永远十六岁的少女心<br>base成都，从未停止热爱生活，步履不停地…<br>有感兴趣的事情就去尝试，有的事情坚持了很久，有的事情可能只有三分钟热度<br>但每一件事儿都很享受当下，哪怕真的只有三分钟，那也一定是有意义的  </p>
+<p>学习使人进步，每一门技能总有它能发光的地方<br>一直在各种尝试与学习<br>偶尔安于现状，偶尔居安思危<br>快乐至上，永远向前 ❤</p>
+<hr>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://unangela.com/about/index.html" data-id="ckga7v5g00008e9ne57gy8gtw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></li></ul>
+    </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/App/" rel="tag">App</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Molly/" rel="tag">Molly</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/" rel="tag">idea</a></li></ul>
+    </div>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/App/" style="font-size: 10px;">App</a> <a href="/tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="/tags/HTML/" style="font-size: 13.33px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Molly/" style="font-size: 10px;">Molly</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/14/javascript%E7%BB%83%E4%B9%A0/">javascript小练习</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/%E4%BD%BF%E7%94%A8python%E6%89%B9%E9%87%8F%E5%B0%86svg%E5%9B%BE%E8%BD%AC%E5%8C%96%E6%88%90png%E6%A0%BC%E5%BC%8F/">使用python批量将svg图转化成png格式</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/08/landscape%E7%9A%84%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/">Hexo默认主题landscape优化</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/04/%E4%BD%BF%E7%94%A8GitHub%E6%90%AD%E5%BB%BA%E7%AC%AC2%E4%B8%AAHexo%E5%8D%9A%E5%AE%A2/">使用GitHub搭建第二个Hexo博客</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/18/APP%E7%88%B1%E7%94%A8%E6%8E%A8%E8%8D%90-Una/">小碗里APP爱用推荐</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Una<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

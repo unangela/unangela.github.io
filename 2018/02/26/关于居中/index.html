@@ -1,37 +1,295 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
 
+  
+  <title>简单易懂的CSS实现水平居中和垂直居中 | 一朵花与森林</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最早开始学习 HTML 的时候，就看了居中应该怎么居中，实际做东西的时候遇到还是会去翻翻笔记，或者几种方法挨个试效果，撞到哪个对了就对了。还是想把这个梳理一下，希望以后在遇到居中需和不居中问题的时候可以快速清晰地定位。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单易懂的CSS实现水平居中和垂直居中">
+<meta property="og:url" content="http://unangela.com/2018/02/26/%E5%85%B3%E4%BA%8E%E5%B1%85%E4%B8%AD/index.html">
+<meta property="og:site_name" content="一朵花与森林">
+<meta property="og:description" content="最早开始学习 HTML 的时候，就看了居中应该怎么居中，实际做东西的时候遇到还是会去翻翻笔记，或者几种方法挨个试效果，撞到哪个对了就对了。还是想把这个梳理一下，希望以后在遇到居中需和不居中问题的时候可以快速清晰地定位。">
+<meta property="og:locale">
+<meta property="og:image" content="http://wx3.sinaimg.cn/large/61b81d32gy1forkm52td0j206805da9y.jpg">
+<meta property="og:image" content="http://wx3.sinaimg.cn/large/61b81d32gy1forof60p93j20bb06a3ye.jpg">
+<meta property="og:image" content="http://wx4.sinaimg.cn/large/61b81d32gy1forov4xvf0j20bc06jmx8.jpg">
+<meta property="og:image" content="http://wx4.sinaimg.cn/large/61b81d32gy1fotkrp2yk9j20az05uweh.jpg">
+<meta property="og:image" content="http://wx3.sinaimg.cn/mw690/61b81d32gy1fotm4ajqyaj20b1064t8m.jpg">
+<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/61b81d32gy1fotmyavus5j20ax03et90.jpg">
+<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/61b81d32gy1fotmylx6ewj20b103gjrp.jpg">
+<meta property="og:image" content="http://wx3.sinaimg.cn/mw690/61b81d32gy1fotmyolhp7j20b203pgly.jpg">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/61b81d32gy1fotu60t46nj20b307bmx9.jpg">
+<meta property="og:image" content="http://wx1.sinaimg.cn/mw690/61b81d32gy1fotu63ll0nj20b006rdfu.jpg">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/61b81d32gy1fotu65z2xcj20ay06cglq.jpg">
+<meta property="article:published_time" content="2018-02-26T06:42:23.000Z">
+<meta property="article:modified_time" content="2020-04-14T01:22:53.865Z">
+<meta property="article:author" content="Una">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wx3.sinaimg.cn/large/61b81d32gy1forkm52td0j206805da9y.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="一朵花与森林" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+<meta name="generator" content="Hexo 5.2.0"></head>
 
-{% block page_class %}page-post-detail{% endblock %}
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">一朵花与森林</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://unangela.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-关于居中" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/26/%E5%85%B3%E4%BA%8E%E5%B1%85%E4%B8%AD/" class="article-date">
+  <time datetime="2018-02-26T06:42:23.000Z" itemprop="datePublished">2018-02-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+  </div>
 
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      简单易懂的CSS实现水平居中和垂直居中
+    </h1>
+  
 
-{% block content %}
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>　　最早开始学习 HTML 的时候，就看了居中应该怎么居中，实际做东西的时候遇到还是会去翻翻笔记，或者几种方法挨个试效果，撞到哪个对了就对了。还是想把这个梳理一下，希望以后在遇到居中需和不居中问题的时候可以快速清晰地定位。<a id="more"></a></p>
+<hr>
+<p>　　先回忆一下行内元素和块状元素。<br>　　<strong>行内元素</strong>（又称内联元素），相邻的行内元素会排列在同一行里，如果一行排不下，才会换行，比如 <code>&lt;a&gt; &lt;img&gt;</code>，其宽高都由元素自身内容决定，对于行内元素来讲，设置 <code>width</code> 和 <code>height</code> 就没啥用了。<br>　　<strong>块级元素</strong>，自己独占一行，比如 <code>&lt;div&gt;</code>，宽度占满其父元素宽度，相邻的块级元素自上而下垂直排列，不会显示在一行。<br>　　块级元素可以设置 <code>width</code> 和 <code>height</code>，不过即使设置了宽，块级元素仍旧会占一整行，相邻的元素还是会换行显示。因为我们所定义的 width 仅仅是图中蓝色区域 content 的宽：<br>　　<img src="http://wx3.sinaimg.cn/large/61b81d32gy1forkm52td0j206805da9y.jpg" alt="盒子模型"><br>　　上图中的 <code>margin</code> 和 <code>padding</code> 属性，块级元素可以设置 margin 和 padding 四个方向的属性，而行内元素只有水平方向（left\right）的 padding 和 margin 会产生效果，垂直方向无效。<br>　　<a target="_blank" rel="noopener" href="http://wx4.sinaimg.cn/large/61b81d32gy1form1pdgxbj20eq0ho3zt.jpg">块级元素列表</a><br>　　<a target="_blank" rel="noopener" href="http://wx1.sinaimg.cn/large/61b81d32gy1form1vz4z6j20dz0g2gms.jpg">行内元素列表</a><br>　　<a target="_blank" rel="noopener" href="http://wx4.sinaimg.cn/large/61b81d32gy1form1son7cj20ei051aaj.jpg">可变元素</a></p>
+<h3 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h3><p>　　水平居中网上也有很多总结，一般分为行内元素和块级元素再根据不同情况来区分使用，这里写一下自己的理解。最基础的无非就是 <code>margin:auto</code> 和 <code>text-align:center</code>，前者是自己想要居中于父模块，后者是内容想要居中于自己。</p>
+<p><strong>举一个例子</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--001--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;width:200px; margin:auto&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h3</span>&gt;</span>文字<span class="tag">&lt;/<span class="name">h3</span>&gt;</span> <span class="comment">&lt;!--文本信息--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;logo.svg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100px;&quot;</span> /&gt;</span> <span class="comment">&lt;!--图片，行内元素--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;width:20px;height:20px;background-color:yellow;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> <span class="comment">&lt;!--块级元素--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://wx3.sinaimg.cn/large/61b81d32gy1forof60p93j20bb06a3ye.jpg" alt="001"><br>　　如上图，蓝色区域即 div 居中在 body，div 包含的内容并不居中。下面我们把 <code>margin:auto</code> 改成 <code>text-align:center</code>：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--002--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;width:200px; text-align:center&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h3</span>&gt;</span>文字<span class="tag">&lt;/<span class="name">h3</span>&gt;</span> <span class="comment">&lt;!--文本信息--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;logo.svg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100px;&quot;</span> /&gt;</span> <span class="comment">&lt;!--图片，行内元素--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;width:20px;height:20px;background-color:yellow;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> <span class="comment">&lt;!--块级元素--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://wx4.sinaimg.cn/large/61b81d32gy1forov4xvf0j20bc06jmx8.jpg" alt="002"><br>　　图中 div 本身相对 body 来讲并不居中，而是 div 里面的内容相对于 div 居中了（暂且忽略小黄块）。我们可以改变一下 div 的 width ，多次验证一下。下面我们把父容器的宽度去掉试试：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--003--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;text-align:center&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h3</span>&gt;</span>文字<span class="tag">&lt;/<span class="name">h3</span>&gt;</span> <span class="comment">&lt;!--文本信息--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;logo.svg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100px;&quot;</span> /&gt;</span> <span class="comment">&lt;!--图片，行内元素--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;width:20px;height:20px;background-color:yellow;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> <span class="comment">&lt;!--块级元素--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://wx4.sinaimg.cn/large/61b81d32gy1fotkrp2yk9j20az05uweh.jpg" alt="003"><br>　　我们看到 div 继承了父容器 body 的宽度，如前文所说的块级元素的特征体现。<br><strong>下一步思考</strong><br>　　我们通过上面的例子知道了 <code>margin:auto</code> 和 <code>text-align:center</code> 的基本用法，但是也发现似乎不能一概而论，比如前面那个没有被居中的小黄块。因为它们在使用的时候也是有条件的。</p>
+<blockquote>
+<p><code>margin:auto</code> 使自己相对于父元素居中，只有在自身 width 声明的情况下才生效。<br><code>text-align:center</code> 使子元素相对于自己居中，只对内容中的文本信息、行内元素有效。</p>
+</blockquote>
+<p>　　想想怎么把上面那个小黄块再居中就很简单了，因为它是有 width 的，只需要添加一个 margin:auto 属性就可以了。那如果这个小黄块的 width 是不一定的呢。<br>　　假如预期是给这个 div 一点内容，内容多宽背景色就多宽：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--004--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;text-align:center&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h3</span>&gt;</span>文字<span class="tag">&lt;/<span class="name">h3</span>&gt;</span> <span class="comment">&lt;!--文本信息--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;logo.svg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100px;&quot;</span> /&gt;</span> <span class="comment">&lt;!--图片，行内元素--&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--块级元素--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;width:20px;height:20px;background-color:yellow;margin:auto&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;background-color:green;&quot;</span>&gt;</span>宽度不定的块级元素<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://wx3.sinaimg.cn/mw690/61b81d32gy1fotm4ajqyaj20b1064t8m.jpg" alt="004"><br>　　我们发现图中的绿色 div 并不符合我们的预期，背景色超出了本身的内容，话说里面的文字为什么居中呢，是因为父元素 div 的 <code>text-align:center</code> 使得文本内容居中。</p>
+<p>下面来看看怎么解决不定宽度块级元素的居中问题吧：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--005--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--初始状态--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;background-color:green;&quot;</span>&gt;</span>宽度不定的块级元素<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--table方法--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;background-color:green;&quot;</span>&gt;</span>宽度不定的块级元素，方法1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--将div的块级属性使用display改变为内联属性--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;text-align:center;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;display:inline; background-color:green;&quot;</span>&gt;</span>宽度不定的块级元素，方法2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--使用相对定位--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;float:left; position:relative; left:50%;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;position:relative; left:-50%; background-color:green;&quot;</span>&gt;</span>宽度不定的块级元素，方法3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://wx4.sinaimg.cn/mw690/61b81d32gy1fotmyavus5j20ax03et90.jpg"><br><img src="http://wx4.sinaimg.cn/mw690/61b81d32gy1fotmylx6ewj20b103gjrp.jpg"><br><img src="http://wx3.sinaimg.cn/mw690/61b81d32gy1fotmyolhp7j20b203pgly.jpg"></p>
+<ul>
+<li>用 table 包围后，使用 table 的特性使其居中</li>
+<li>display 改变了 div 本身块级元素的性质，使用时需要注意连带影响</li>
+</ul>
+<hr>
+<h3 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h3><ul>
+<li>垂直居中最简单的一种情况，单行文本，设置 <code>line-height</code> 的值等于 <code>height</code>，这个方法仅限于<strong>单行</strong>且<strong>文本</strong>，如果换行的话布局会乱掉，使用的时候最好添加一条属性 <code>overflow:hidden</code>。</li>
+<li><code>vertical-align:middle</code>也是常常会看到的一个用户垂直居中的设置，使用这个属性的时候可以将对象用 table 包裹，设置 table 的 style 属性（类似水平居中的 table 方法），或者直接将其设置 <code>display:table-cell</code>，再添加这个属性，不过 display 操作改变了元素本身的性质，使用时要注意连带影响。<blockquote>
+<p>vertical-align 是定义<strong>行内元素</strong>的基线相对于<strong>该元素所在行</strong>的基线垂直对齐，<a target="_blank" rel="noopener" href="http://www.w3school.com.cn/cssref/pr_pos_vertical-align.asp">详情</a><br>也就是使得本身和相邻元素对齐</p>
+</blockquote>
+</li>
+<li>flex 布局，似乎旧浏览器兼容不太好，但我觉得用着还行，太老的用户可以放弃了。设置 <code>display:flex</code>，然后 <code>align-items:center</code>。同上所述，使用 display 要注意连带影响。</li>
+<li>如果父容器高度可变的话，直接使 <code>padding-top</code> 和 <code>padding-button</code> 的值相等就好。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--vertical-align的应用--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;height:200px; background-color:yellow;display:table-cell;vertical-align:middle&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;font-size:20px;vertical-align:middle&quot;</span>&gt;</span>文字<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">style</span>=<span class="string">&quot;vertical-align:middle&quot;</span> <span class="attr">src</span>=<span class="string">&quot;logo.svg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100px;&quot;</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;font-size:40px;vertical-align:middle&quot;</span>&gt;</span>文字<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--table方法--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">style</span>=<span class="string">&quot;height:200px;background-color:red;vertical-align:middle&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">p</span>&gt;</span>文字<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;logo.svg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100px;&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--flex方法--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;height:200px; background-color:green;display:flex;align-items:center&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>文字<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;logo.svg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100px;&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<img src="http://wx2.sinaimg.cn/mw690/61b81d32gy1fotu60t46nj20b307bmx9.jpg"><br>　　上图内容基于一条水平线对齐，就是 <code>vertical-align:middle</code> 的功劳<br><img src="http://wx1.sinaimg.cn/mw690/61b81d32gy1fotu63ll0nj20b006rdfu.jpg"><br><img src="http://wx2.sinaimg.cn/mw690/61b81d32gy1fotu65z2xcj20ay06cglq.jpg"><br>　　    对比上面两张图，flex 布局使得 <code>&lt;p&gt;</code> 标签没有独占一行。</li>
+</ul>
+<p>　　垂直居中的方法还有很多，如果能针对各种方法理出一个清晰的思路再来补充，目前觉得以上的够用~~就酱好累啊先不写了( ￣︿￣)</p>
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://unangela.com/2018/02/26/%E5%85%B3%E4%BA%8E%E5%B1%85%E4%B8%AD/" data-id="ckga7v5gb000ue9ne4kcl7qdm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li></ul>
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/27/%E8%A7%A3%E5%86%B3Next%E4%B8%BB%E9%A2%98%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E5%8A%A0%E8%BD%BD%E6%8A%A5%E9%94%99/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          解决Next主题添加网易云音乐后加载报错
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/23/%E6%BB%9A%E5%8A%A8%E8%A7%86%E5%B7%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">滚动视差</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></li></ul>
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/App/" rel="tag">App</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Molly/" rel="tag">Molly</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/" rel="tag">idea</a></li></ul>
+    </div>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/App/" style="font-size: 10px;">App</a> <a href="/tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="/tags/HTML/" style="font-size: 13.33px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Molly/" style="font-size: 10px;">Molly</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/14/javascript%E7%BB%83%E4%B9%A0/">javascript小练习</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/08/%E4%BD%BF%E7%94%A8python%E6%89%B9%E9%87%8F%E5%B0%86svg%E5%9B%BE%E8%BD%AC%E5%8C%96%E6%88%90png%E6%A0%BC%E5%BC%8F/">使用python批量将svg图转化成png格式</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/08/landscape%E7%9A%84%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/">Hexo默认主题landscape优化</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/04/%E4%BD%BF%E7%94%A8GitHub%E6%90%AD%E5%BB%BA%E7%AC%AC2%E4%B8%AAHexo%E5%8D%9A%E5%AE%A2/">使用GitHub搭建第二个Hexo博客</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/18/APP%E7%88%B1%E7%94%A8%E6%8E%A8%E8%8D%90-Una/">小碗里APP爱用推荐</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Una<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
