@@ -1,0 +1,209 @@
+---
+title: Tag Settings 备忘
+date: 2020-10-19 11:52:43
+tags: Hexo
+categories: 工具
+---
+### 标签
+{% label @ label %}
+{% label primary@ primary %}
+{% label success@ success %}
+{% label info@ info %}
+{% label warning @ warning %}
+{% label danger@ danger %}
+{% label default @ default %}
+代码:
+```
+{% label @ label %}
+{% label primary@ primary %}
+{% label success@ success %}
+{% label info@ info %}
+{% label warning @ warning %}
+{% label danger@ danger %}
+{% label default @ default %}
+*{% label warning @ 斜体 %}*
+**{% label danger@ 加粗 %}**
+~~{% label default @ 下划线 %}~~
+```
+<!--more-->
+### Note-注意事项
+{% note default %}
+default
+{% endnote %}
+{% note primary %}
+primary
+{% endnote %}
+{% note success %}
+success
+{% endnote %}
+{% note info %}
+info
+{% endnote %}
+{% note warning %}
+warning
+{% endnote %}
+{% note danger %}
+danger
+{% endnote %}
+先设置：
+{% codeblock lang:yaml next/_config.yml %}
+# Mermaid tag
+note:
+  style: flat
+  icons: false
+  light_bg_offset: 0
+{% endcodeblock %}
+代码：
+```
+{% note default %}
+default
+{% endnote %}
+
+{% note primary %}
+primary
+{% endnote %}
+
+{% note success %}
+success
+{% endnote %}
+
+{% note info %}
+info
+{% endnote %}
+
+{% note warning %}
+warning
+{% endnote %}
+
+{% note danger %}
+danger
+{% endnote %}
+```
+### TAB切换
+{% tabs Fourth unique name %}
+<!-- tab Solution 1 -->
+**This is Tab 1.&#x1F601;**
+<!-- endtab -->
+
+<!-- tab Solution 2 -->
+**This is Tab 2.**
+<!-- endtab -->
+
+<!-- tab Solution 3 -->
+**This is Tab 3.**
+<!-- endtab -->
+{% endtabs %}
+代码：
+```
+{% tabs Fourth unique name %}
+<!-- tab Solution 1 -->
+**This is Tab 1.&#x1F601;**
+<!-- endtab -->
+
+<!-- tab Solution 2 -->
+**This is Tab 2.**
+<!-- endtab -->
+
+<!-- tab Solution 3 -->
+**This is Tab 3.**
+<!-- endtab -->
+{% endtabs %}
+```
+
+
+### 带署名的引用
+{% blockquote Seth Godin https://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html Welcome to Island Marketing %}
+Every interaction is both precious and an opportunity to delight.
+{% endblockquote %}
+代码:
+```
+{% blockquote Seth Godin https://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html Welcome to Island Marketing %}
+Every interaction is both precious and an opportunity to delight.
+{% endblockquote %}
+```
+　　
+### 引用并文本居中
+{% cq %}
+Hello，world！
+{% endcq %}
+代码：
+```
+{% cq %}
+Hello，world！
+{% endcq %}
+```
+
+### 带标题的代码块
+{% codeblock lang:javascript hello.js %}
+console.log('Hello World!');
+{% endcodeblock %}
+代码：
+```
+{% codeblock lang:javascript hello.js %}
+console.log('Hello World!');
+{% endcodeblock %}
+```
+
+### iframe
+{% iframe https://cn.bing.com/ 100% 300px %}
+代码:
+```
+{% iframe https://cn.bing.com/ 100% 300px %}
+```
+
+### 抖动的网格URL
+{% linkgrid %}
+Theme NexT | https://theme-next.js.org/?_blank | Stay Simple. Stay NexT. | /images/apple-touch-icon-next.png
+{% endlinkgrid %}
+代码：
+```
+{% linkgrid %}
+Theme NexT | https://theme-next.js.org/?_blank | Stay Simple. Stay NexT. | /images/apple-touch-icon-next.png
+{% endlinkgrid %}
+
+or
+
+{% lg /images/apple-touch-icon-next.png , %}
+Theme NexT , https://theme-next.js.org/?_blank , Stay Simple. Stay NexT. , /images/apple-touch-icon-next.png
+{% endlg %}
+```
+### Mermaid-饼图
+{% mermaid pie %}
+"Dogs" : 386
+"Cats" : 85
+"Rats" : 15
+{% endmermaid %}
+先设置:
+{% codeblock lang:yaml next/_config.yml %}
+# Mermaid tag
+mermaid:
+  enable: true
+  # Available themes: default | dark | forest | neutral
+  theme: forest
+{% endcodeblock %}
+代码：
+```
+{% mermaid pie %}
+"Dogs" : 386
+"Cats" : 85
+"Rats" : 15
+{% endmermaid %}
+```
+
+### 插入视频
+{% video https://vjs.zencdn.net/v/oceans.mp4 %}
+代码：
+```
+# YouTube 视频
+{% youtube video_id [type] [cookie] %}
+
+# 普通视频
+{% video https://vjs.zencdn.net/v/oceans.mp4 %}
+```
+---
+
+> 参考：
+1.[Hexo has a lot of tags](https://hexo.io/docs/tag-plugins?_blank)
+2.[tag-plugins](https://theme-next.js.org/docs/tag-plugins?_blank)
+3.新标签页打开外链，在链接后加上`?_blank`
+4.[markdown添加emoji](https://www.jianshu.com/p/37b70f7d6067)

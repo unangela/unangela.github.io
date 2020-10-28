@@ -5,7 +5,7 @@ tags: Hexo
 categories: 工具
 ---
 landscape 作为 Hexo 默认主题还是非常简洁大方的，该有的都有
-[Demo](http://unangela.com/postcards)<!--more-->
+[Demo](https://unangela.com/postcards)<!--more-->
 ### 页面banner图替换
 图片路径：...\themes\landscape\source\css\images\banner.jpg
 分辨率尽量一致：1900*1200，大小不宜过大，否则影响加载，尽量500kb以内。
