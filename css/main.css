@@ -17,10 +17,10 @@
   --btn-default-hover-bg: #222;
   --btn-default-hover-color: #fff;
   --btn-default-hover-border-color: #222;
-  --highlight-background: #fff;
-  --highlight-foreground: #000;
-  --highlight-gutter-background: #e5e5e5;
-  --highlight-gutter-foreground: #191919;
+  --highlight-background: #f0f0f0;
+  --highlight-foreground: #444;
+  --highlight-gutter-background: #dedede;
+  --highlight-gutter-foreground: #555;
 }
 html {
   line-height: 1.15; /* 1 */
@@ -363,7 +363,7 @@ td {
 }
 /*
 
-XCode style (c) Angel Garcia <angelgarcia.mail@gmail.com>
+Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 
 */
 
@@ -371,99 +371,94 @@ XCode style (c) Angel Garcia <angelgarcia.mail@gmail.com>
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: #fff;
-  color: black;
-}
-
-/* Gray DOCTYPE selectors like WebKit */
-.xml .hljs-meta {
-  color: #c0c0c0;
-}
-
-.hljs-comment,
-.hljs-quote {
-  color: #007400;
-}
-
-.hljs-tag,
-.hljs-attribute,
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-literal,
-.hljs-name {
-  color: #aa0d91;
-}
-
-.hljs-variable,
-.hljs-template-variable {
-  color: #3F6E74;
-}
-
-.hljs-code,
-.hljs-string,
-.hljs-meta-string {
-  color: #c41a16;
-}
-
-.hljs-regexp,
-.hljs-link {
-  color: #0E0EFF;
-}
-
-.hljs-title,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-number {
-  color: #1c00cf;
-}
-
-.hljs-section,
-.hljs-meta {
-  color: #643820;
+  background: #F0F0F0;
 }
 
 
-.hljs-class .hljs-title,
-.hljs-type,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-params {
-  color: #5c2699;
-}
+/* Base color: saturation 0; */
 
-.hljs-attr {
-  color: #836C28;
-}
-
+.hljs,
 .hljs-subst {
-  color: #000;
+  color: #444;
 }
 
-.hljs-formula {
-  background-color: #eee;
-  font-style: italic;
+.hljs-comment {
+  color: #888888;
 }
 
-.hljs-addition {
-  background-color: #baeeba;
-}
-
-.hljs-deletion {
-  background-color: #ffc8bd;
-}
-
-.hljs-selector-id,
-.hljs-selector-class {
-  color: #9b703f;
-}
-
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
 .hljs-doctag,
-.hljs-strong {
+.hljs-name {
   font-weight: bold;
 }
 
+
+/* User color: hue: 0 */
+
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #880000;
+}
+
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold;
+}
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #BC6060;
+}
+
+
+/* Language color: hue: 90; */
+
+.hljs-literal {
+  color: #78A960;
+}
+
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #397300;
+}
+
+
+/* Meta color: hue: 200 */
+
+.hljs-meta {
+  color: #1f7199;
+}
+
+.hljs-meta-string {
+  color: #4d99bf;
+}
+
+
+/* Misc effects */
+
 .hljs-emphasis {
   font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
 }
 
 .highlight:hover .copy-btn,
@@ -2768,7 +2763,7 @@ mjx-container[display="true"] + br {
   padding: 0;
 }
 code {
-  color: #5c2699;
-  background: #fbf7f8;
+  color: #800;
+  background: #f0f0f0;
   margin: 2px;
 }

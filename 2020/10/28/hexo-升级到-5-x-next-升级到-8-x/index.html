@@ -23,21 +23,23 @@
     var CONFIG = {"hostname":"unangela.com","root":"/","scheme":"Pisces","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 
-  <meta name="description" content="之前老遇到页面加载的时候出现网易云的弹窗“资源加载失败”，感觉跟 next 主题加载页面时的动效有关系，很暴力地把 iframe 的 src 都改成 onload 后延时加载，然后就没遇到过了，记录一下这个问题。">
+  <meta name="description" content="1. 根目录检查 npm outdated 哪些需要更新，对应修改 package.json 文件的版本号： &amp;#123;  &quot;name&quot;: &quot;hexo-site&quot;,  &quot;version&quot;: &quot;0.0.0&quot;,  &quot;private&quot;: true,  &quot;hexo&quot;: &amp;#123;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决Next主题添加网易云音乐后加载报错">
-<meta property="og:url" content="https://unangela.com/2018/02/27/%E8%A7%A3%E5%86%B3Next%E4%B8%BB%E9%A2%98%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E5%8A%A0%E8%BD%BD%E6%8A%A5%E9%94%99/index.html">
+<meta property="og:title" content="hexo 升级到 5.x , next 升级到 8.x">
+<meta property="og:url" content="https://unangela.com/2020/10/28/hexo-%E5%8D%87%E7%BA%A7%E5%88%B0-5-x-next-%E5%8D%87%E7%BA%A7%E5%88%B0-8-x/index.html">
 <meta property="og:site_name" content="Una｜blog &amp; journal">
-<meta property="og:description" content="之前老遇到页面加载的时候出现网易云的弹窗“资源加载失败”，感觉跟 next 主题加载页面时的动效有关系，很暴力地把 iframe 的 src 都改成 onload 后延时加载，然后就没遇到过了，记录一下这个问题。">
+<meta property="og:description" content="1. 根目录检查 npm outdated 哪些需要更新，对应修改 package.json 文件的版本号： &amp;#123;  &quot;name&quot;: &quot;hexo-site&quot;,  &quot;version&quot;: &quot;0.0.0&quot;,  &quot;private&quot;: true,  &quot;hexo&quot;: &amp;#123;">
 <meta property="og:locale">
-<meta property="article:published_time" content="2018-02-27T02:05:36.000Z">
-<meta property="article:modified_time" content="2020-04-14T01:22:53.865Z">
+<meta property="og:image" content="https://i.loli.net/2020/10/28/jkA5rBb8WCwfJM6.png">
+<meta property="article:published_time" content="2020-10-28T08:43:49.000Z">
+<meta property="article:modified_time" content="2020-10-28T09:34:24.759Z">
 <meta property="article:author" content="Una">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/10/28/jkA5rBb8WCwfJM6.png">
 
 
-<link rel="canonical" href="https://unangela.com/2018/02/27/%E8%A7%A3%E5%86%B3Next%E4%B8%BB%E9%A2%98%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E5%8A%A0%E8%BD%BD%E6%8A%A5%E9%94%99/">
+<link rel="canonical" href="https://unangela.com/2020/10/28/hexo-%E5%8D%87%E7%BA%A7%E5%88%B0-5-x-next-%E5%8D%87%E7%BA%A7%E5%88%B0-8-x/">
 
 
 <script data-pjax class="page-configurations">
@@ -50,7 +52,7 @@
   };
 </script>
 
-  <title>解决Next主题添加网易云音乐后加载报错 | Una｜blog & journal</title>
+  <title>hexo 升级到 5.x , next 升级到 8.x | Una｜blog & journal</title>
   
 
 
@@ -292,7 +294,7 @@
   
 
   <article itemscope itemtype="https://schema.org/Article" class="post-content" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://unangela.com/2018/02/27/%E8%A7%A3%E5%86%B3Next%E4%B8%BB%E9%A2%98%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E5%8A%A0%E8%BD%BD%E6%8A%A5%E9%94%99/">
+    <link itemprop="mainEntityOfPage" href="https://unangela.com/2020/10/28/hexo-%E5%8D%87%E7%BA%A7%E5%88%B0-5-x-next-%E5%8D%87%E7%BA%A7%E5%88%B0-8-x/">
 
     <span hidden itemprop="author" itemscope itemtype="https://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -305,7 +307,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          解决Next主题添加网易云音乐后加载报错
+          hexo 升级到 5.x , next 升级到 8.x
         </h1>
 
         <div class="post-meta-container">
@@ -316,7 +318,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2018-02-27 10:05:36" itemprop="dateCreated datePublished" datetime="2018-02-27T10:05:36+08:00">2018-02-27</time>
+      <time title="Created: 2020-10-28 16:43:49" itemprop="dateCreated datePublished" datetime="2020-10-28T16:43:49+08:00">2020-10-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -345,12 +347,39 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>　　之前老遇到页面加载的时候出现网易云的弹窗“资源加载失败”，感觉跟 next 主题加载页面时的动效有关系，很暴力地把 iframe 的 src 都改成 onload 后延时加载，然后就没遇到过了，记录一下这个问题。<a id="more"></a><br>　　添加背景音乐，在 <code>themes\next\layout\_custom\sidebar.swig</code> 文件中添加下面的代码：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--网易云音乐外嵌iframe--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;iframer&quot;</span> <span class="attr">frameborder</span>=<span class="string">&quot;no&quot;</span> <span class="attr">border</span>=<span class="string">&quot;0&quot;</span> <span class="attr">marginwidth</span>=<span class="string">&quot;0&quot;</span> <span class="attr">marginheight</span>=<span class="string">&quot;0&quot;</span> <span class="attr">width</span>=<span class="string">220</span> <span class="attr">height</span>=<span class="string">86</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">&#x27;javascript&#x27;</span> <span class="attr">type</span>=<span class="string">&#x27;text/javascript&#x27;</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">var</span> iframer = <span class="built_in">document</span>.getElementById(<span class="string">&quot;iframer&quot;</span>);</span></span><br><span class="line"><span class="javascript">			iframer.setAttribute(<span class="string">&quot;src&quot;</span>,<span class="string">&quot;//music.163.com/outchain/player?type=2&amp;id=442308&amp;auto=0&amp;height=66&quot;</span>);</span></span><br><span class="line">		&#125;, 1000);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<div style="text-align:center">
-    <iframe id="iframer" frameborder="no" border="0" marginwidth="0" marginheight="0" width=400 height=86 src="//music.163.com/outchain/player?type=2&id=442308&auto=0&height=66"></iframe>
-    这个外嵌我没加 setTimeout ，不知道这个页面会不会出现弹框 bug
+        <mark class="label primary"> 1. 根目录检查 npm outdated 哪些需要更新，对应修改 package.json 文件的版本号：</mark>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;hexo-site&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;0.0.0&quot;,</span><br><span class="line">  &quot;private&quot;: true,</span><br><span class="line">  &quot;hexo&quot;: &#123;</span><br><span class="line">    &quot;version&quot;: &quot;5.2.0&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;hexo&quot;: &quot;^5.2.0&quot;,</span><br><span class="line">    &quot;hexo-deployer-git&quot;: &quot;^2.1.0&quot;,</span><br><span class="line">    &quot;hexo-generator-archive&quot;: &quot;^1.0.0&quot;,</span><br><span class="line">    &quot;hexo-generator-category&quot;: &quot;^1.0.0&quot;,</span><br><span class="line">    &quot;hexo-generator-index-pin-top&quot;: &quot;^0.2.2&quot;,</span><br><span class="line">    &quot;hexo-generator-tag&quot;: &quot;^1.0.0&quot;,</span><br><span class="line">    &quot;hexo-renderer-ejs&quot;: &quot;^1.0.0&quot;,</span><br><span class="line">    &quot;hexo-renderer-marked&quot;: &quot;^3.3.0&quot;,</span><br><span class="line">    &quot;hexo-renderer-stylus&quot;: &quot;^2.0.1&quot;,</span><br><span class="line">    &quot;hexo-server&quot;: &quot;^2.0.0&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<mark class="label primary"> 2. 升级 npm install —save ，完了运行 hexo —version 可查看当前版本号</mark>
+<p>这个时候控制台出现了一个警告错误：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">WARN  Deprecated config detected: <span class="string">&quot;external_link&quot;</span> with a Boolean value is deprecated. See https://hexo.io/docs/configuration <span class="keyword">for</span> more details.</span><br></pre></td></tr></table></figure>
+<p>解决：找到 <code>_config.yml</code> 这个文件，修改 <code>external_link</code> 的配置：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#原始</span></span><br><span class="line"><span class="attr">external_link:</span> <span class="literal">true</span> <span class="comment"># Open external links in new tab</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#改成这样</span></span><br><span class="line"><span class="attr">external_link:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment"># Open external links in new tab</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">site</span> <span class="comment"># Apply to the whole site</span></span><br><span class="line">  <span class="attr">exclude:</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<mark class="label primary"> 3. 然后 hexo g、hexo d，看下网站有没有啥问题</mark>
+<p>哦豁，挂了，还是不能这么简单粗暴…<br><img data-src="https://i.loli.net/2020/10/28/jkA5rBb8WCwfJM6.png" alt="image.png">看了下生成静态文件的时候控制台出现的信息：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">WARN  &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">WARN  &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; ATTENTION! &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">WARN  &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">WARN   NexT repository is moving here: https:&#x2F;&#x2F;github.com&#x2F;theme-next </span><br><span class="line">WARN  &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">WARN   It&#39;s rebase to v6.0.0 and future maintenance will resume there</span><br><span class="line">WARN  &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br></pre></td></tr></table></figure>
+<p>哦，换了个组织维护，代码库都变了….</p>
+<ul>
+<li>确认是不是主题的问题，把主题配置修改成默认主题，执行 <code>hexo g</code>、<code>hexo server</code> 后，打开 localhost:4000，可以正常查看！所以果真是 next 更新的问题。</li>
+<li>备份之前的 next 文件夹</li>
+<li>克隆新的 next  <code>git clone https://github.com/next-theme/hexo-theme-next themes/next</code></li>
+<li>再次执行 <code> hexo g</code>、<code>hexo server</code> 后，打开 localhost:4000，恢复正常了～</li>
+<li>当然，之前的自定义设置都没有了</li>
+</ul>
+<div class="note info"><p>题外，顺带了解了一下 hexo 的目录结构:</p>
 </div>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_config.yml &#x2F;&#x2F;配置文件</span><br><span class="line">[themes] &#x2F;&#x2F;主题文件夹，每个主题对应一个单独的文件夹，默认主题为landscape，初始化时自动创建</span><br><span class="line">[source] &#x2F;&#x2F;资源文件夹，用来存放图片、Markdown文档（文章、草稿）、各种页面（分类、关于页面等）</span><br><span class="line">[scripts] &#x2F;&#x2F;脚本目录，此目录下的 JavaScript 文件会被自动执行</span><br><span class="line">[scaffolds] &#x2F;&#x2F;模板文件夹，包含 page，post，draft 三种模板，初始化时自动创建</span><br><span class="line">package.json &#x2F;&#x2F;记录 hexo 的版本以及相关依赖包的版本</span><br><span class="line">package-lock.json &#x2F;&#x2F;npm 时自动生成的文件，也是用来记录版本号的，具体区别可以 Google</span><br><span class="line">[node_modules] &#x2F;&#x2F;用来存储已安装的各类依赖包（node 中使用命令 npm install 会产生的文件夹）</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;执行过 &#96;hexo deploy&#96; 命令，目录结构会新增：</span><br><span class="line">[public] &#x2F;&#x2F;将 source 文件夹里的 Markdown 文档，转换成 index.html 静态文件</span><br><span class="line">.deploy_git &#x2F;&#x2F;将 public 文件夹的内容提交到 Github 后生成，内容与 public 文件夹基本一致</span><br><span class="line">.gitignore &#x2F;&#x2F;推送 git 时忽略文件夹，可以把 hexo g、d 执行时自动生成的一些文件夹放在里面</span><br><span class="line">db.json &#x2F;&#x2F;db.json是由source&#x2F;**&#x2F;*.md的所有文件解析得到的</span><br></pre></td></tr></table></figure>
+<mark class="label primary"> 4. 配置一下新的 next</mark>
+<ul>
+<li>新的很多常用设置，都是开关 true / false 就好</li>
+<li>sidebar 添加最近文章和背景音乐，需要在 <code>hexo/source/_data/sidebar.njk</code> 中添加内容（注意要在 next 配置文件中打开<code>_data/sidebar.njk</code>）<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;# RecentPosts #&#125;</span><br><span class="line">&#123;%- if theme.recent_posts %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;links-of-recent-posts motion-element&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;links-of-recent-posts-title&quot;</span>&gt;</span></span><br><span class="line">      &#123;%- if theme.recent_posts.icon %&#125;</span><br><span class="line">      <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;&#123;&#123; theme.recent_posts.icon &#125;&#125; fa-fw&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line">      &#123;&#123; theme.recent_posts.title &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;links-of-recent-posts-list&quot;</span>&gt;</span></span><br><span class="line">      &#123;%- set posts = site.posts.sort(&#x27;date&#x27;, &#x27;desc&#x27;).toArray() %&#125;</span><br><span class="line">      &#123;%- for post in posts.slice(&#x27;0&#x27;, theme.recent_posts.max_count) %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;links-of-recent-posts-item&quot;</span>&gt;</span></span><br><span class="line">          &#123;&#123; next_url(post.path, post.title, &#123;title: post.path&#125;) &#125;&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      &#123;%- endfor %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">&#123;# NetCloudMusic #&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">id</span>=<span class="string">&quot;iframer&quot;</span> <span class="attr">frameborder</span>=<span class="string">&quot;no&quot;</span> <span class="attr">border</span>=<span class="string">&quot;0&quot;</span> <span class="attr">marginwidth</span>=<span class="string">&quot;0&quot;</span> <span class="attr">marginheight</span>=<span class="string">&quot;0&quot;</span> <span class="attr">width</span>=<span class="string">220</span> <span class="attr">height</span>=<span class="string">52</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">&#x27;javascript&#x27;</span> <span class="attr">type</span>=<span class="string">&#x27;text/javascript&#x27;</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">          <span class="keyword">var</span> iframer = <span class="built_in">document</span>.getElementById(<span class="string">&quot;iframer&quot;</span>);</span></span><br><span class="line"><span class="javascript">          iframer.setAttribute(<span class="string">&quot;src&quot;</span>,<span class="string">&quot;//music.163.com/outchain/player?type=2&amp;id=526656&amp;auto=1&amp;height=32&quot;</span>);</span></span><br><span class="line">      &#125;, 1000);</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
+</ul>
+
     </div>
 
     
@@ -380,14 +409,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2018/02/26/%E5%85%B3%E4%BA%8E%E5%B1%85%E4%B8%AD/" rel="prev" title="简单易懂的CSS实现水平居中和垂直居中">
-                  <i class="fa fa-chevron-left"></i> 简单易懂的CSS实现水平居中和垂直居中
+                <a href="/2020/10/19/Tag-Settings-%E5%A4%87%E5%BF%98/" rel="prev" title="Tag Settings 备忘">
+                  <i class="fa fa-chevron-left"></i> Tag Settings 备忘
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2018/03/15/fn+F1~F12%E7%BB%84%E5%90%88%E9%94%AE%E7%9C%9F%E7%9A%84%E5%BE%88%E7%83%A6%E5%95%8A/" rel="next" title="“fn+F1~F12”组合键真的很烦啊">
-                  “fn+F1~F12”组合键真的很烦啊 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -587,7 +613,7 @@ if (document.querySelectorAll('.mermaid').length) {
 <script>
 NexT.utils.loadComments('#lv-container', () => {
   window.livereOptions = {
-    refer: "2018/02/27/解决Next主题网易云音乐加载报错/"
+    refer: "2020/10/28/hexo-升级到-5-x-next-升级到-8-x/"
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];

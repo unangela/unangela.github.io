@@ -188,7 +188,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -223,6 +223,9 @@
     </div>
     <ul class="links-of-recent-posts-list">
         <li class="links-of-recent-posts-item">
+          <a href="/2020/10/28/hexo-%E5%8D%87%E7%BA%A7%E5%88%B0-5-x-next-%E5%8D%87%E7%BA%A7%E5%88%B0-8-x/" title="2020&#x2F;10&#x2F;28&#x2F;hexo-升级到-5-x-next-升级到-8-x&#x2F;">hexo 升级到 5.x , next 升级到 8.x</a>
+        </li>
+        <li class="links-of-recent-posts-item">
           <a href="/2020/10/19/Tag-Settings-%E5%A4%87%E5%BF%98/" title="2020&#x2F;10&#x2F;19&#x2F;Tag-Settings-备忘&#x2F;">Tag Settings 备忘</a>
         </li>
         <li class="links-of-recent-posts-item">
@@ -242,9 +245,6 @@
         </li>
         <li class="links-of-recent-posts-item">
           <a href="/2018/04/03/%E4%BA%BA%E7%94%9F%E4%B8%AD%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8C%82%E5%8F%B7/" title="2018&#x2F;04&#x2F;03&#x2F;人生中第一次挂号&#x2F;">人生中第一次挂号</a>
-        </li>
-        <li class="links-of-recent-posts-item">
-          <a href="/2018/03/19/%E5%88%86%E4%BA%AB%E4%B8%80%E5%8F%AA%E5%85%94%E5%AD%90/" title="2018&#x2F;03&#x2F;19&#x2F;分享一只兔子&#x2F;">分享一只兔子</a>
         </li>
     </ul>
   </div>
@@ -351,7 +351,7 @@
 <h3 id="字体-amp-配色-amp-布局"><a href="#字体-amp-配色-amp-布局" class="headerlink" title="字体&amp;配色&amp;布局"></a>字体&amp;配色&amp;布局</h3><p>基础样式：…\themes\landscape\source\css_variables.styl<br>// Colors<br>// Fonts<br>详细文件：…\themes\landscape\source\css_partial*.styl<br>页面布局：…\themes\landscape\layout*.ejs</p>
 <h3 id="添加文章评论"><a href="#添加文章评论" class="headerlink" title="添加文章评论"></a>添加文章评论</h3><ul>
 <li>注册 Disqus，获得 shortname</li>
-<li>打开 …\themes\landscape\layout_partial\article.ejs ，在文件最后添加下面的代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (!index &amp;&amp; post.comments)&#123; %&gt;</span><br><span class="line">&lt;section id&#x3D;&quot;comments&quot;&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;disqus_thread&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">	(function() &#123; </span><br><span class="line">	var d &#x3D; document, s &#x3D; d.createElement(&#39;script&#39;);</span><br><span class="line">	&#x2F;&#x2F;下面 shortname 修改为对应的 shortname</span><br><span class="line">	s.src &#x3D; &#39;https:&#x2F;&#x2F;shortname.disqus.com&#x2F;embed.js&#39;;</span><br><span class="line">	s.setAttribute(&#39;data-timestamp&#39;, +new Date());</span><br><span class="line">	(d.head || d.body).appendChild(s);</span><br><span class="line">	&#125;)();</span><br><span class="line">  &lt;&#x2F;script&gt;</span><br><span class="line">  &lt;noscript&gt;Please enable JavaScript to view the &lt;a href&#x3D;&quot;https:&#x2F;&#x2F;disqus.com&#x2F;?ref_noscript&quot;&gt;comments powered by Disqus.&lt;&#x2F;a&gt;&lt;&#x2F;noscript&gt;</span><br><span class="line">&lt;&#x2F;section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure></li>
+<li>打开 …\themes\landscape\layout_partial\article.ejs ，在文件最后添加下面的代码：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;% if (!index &amp;&amp; post.comments)&#123; %&gt;</span><br><span class="line">&lt;section id&#x3D;&quot;comments&quot;&gt;</span><br><span class="line">  &lt;div id&#x3D;&quot;disqus_thread&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">	(function() &#123; </span><br><span class="line">	var d &#x3D; document, s &#x3D; d.createElement(&#39;script&#39;);</span><br><span class="line">	&#x2F;&#x2F;下面 shortname 修改为对应的 shortname</span><br><span class="line">	s.src &#x3D; &#39;https:&#x2F;&#x2F;shortname.disqus.com&#x2F;embed.js&#39;;</span><br><span class="line">	s.setAttribute(&#39;data-timestamp&#39;, +new Date());</span><br><span class="line">	(d.head || d.body).appendChild(s);</span><br><span class="line">	&#125;)();</span><br><span class="line">  &lt;&#x2F;script&gt;</span><br><span class="line">  &lt;noscript&gt;Please enable JavaScript to view the &lt;a href&#x3D;&quot;https:&#x2F;&#x2F;disqus.com&#x2F;?ref_noscript&quot;&gt;comments powered by Disqus.&lt;&#x2F;a&gt;&lt;&#x2F;noscript&gt;</span><br><span class="line">&lt;&#x2F;section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure></li>
 </ul>
 
     </div>
