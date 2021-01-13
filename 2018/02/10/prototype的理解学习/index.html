@@ -30,14 +30,14 @@
 <meta property="og:site_name" content="Una｜blog &amp; journal">
 <meta property="og:description" content="好记性不如烂笔头，学习笔记的整理，方便以后回顾。如果文章内有什么理解得不对的地方，欢迎在评论指正，共同学习进步。">
 <meta property="og:locale">
-<meta property="og:image" content="https://wx1.sinaimg.cn/mw690/61b81d32gy1fob4pzix2ej20ab03udfs.jpg">
-<meta property="og:image" content="https://wx1.sinaimg.cn/mw690/61b81d32gy1fob9ytrhbzj20eg0gaabg.jpg">
+<meta property="og:image" content="https://flower-1254284353.cos-website.ap-chengdu.myqcloud.com/blog/2021-01-13-145408.jpg">
+<meta property="og:image" content="https://flower-1254284353.cos-website.ap-chengdu.myqcloud.com/blog/2021-01-13-145439.jpg">
 <meta property="article:published_time" content="2018-02-10T07:41:59.000Z">
-<meta property="article:modified_time" content="2020-10-27T09:34:40.124Z">
+<meta property="article:modified_time" content="2021-01-13T14:54:43.933Z">
 <meta property="article:author" content="Una">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://wx1.sinaimg.cn/mw690/61b81d32gy1fob4pzix2ej20ab03udfs.jpg">
+<meta name="twitter:image" content="https://flower-1254284353.cos-website.ap-chengdu.myqcloud.com/blog/2021-01-13-145408.jpg">
 
 
 <link rel="canonical" href="https://unangela.com/2018/02/10/prototype%E7%9A%84%E7%90%86%E8%A7%A3%E5%AD%A6%E4%B9%A0/">
@@ -191,7 +191,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -226,6 +226,9 @@
     </div>
     <ul class="links-of-recent-posts-list">
         <li class="links-of-recent-posts-item">
+          <a href="/2021/01/08/2020%E6%80%BB%E7%BB%93/" title="2021&#x2F;01&#x2F;08&#x2F;2020总结&#x2F;">2020总结</a>
+        </li>
+        <li class="links-of-recent-posts-item">
           <a href="/2020/11/07/%E4%BD%BF%E7%94%A8ffmpeg%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F/" title="2020&#x2F;11&#x2F;07&#x2F;使用ffmpeg批量转换视频格式&#x2F;">使用 ffmpeg 批量转换视频格式</a>
         </li>
         <li class="links-of-recent-posts-item">
@@ -245,9 +248,6 @@
         </li>
         <li class="links-of-recent-posts-item">
           <a href="/2018/04/18/APP%E7%88%B1%E7%94%A8%E6%8E%A8%E8%8D%90-Una/" title="2018&#x2F;04&#x2F;18&#x2F;APP爱用推荐-Una&#x2F;">小碗里APP爱用推荐</a>
-        </li>
-        <li class="links-of-recent-posts-item">
-          <a href="/2018/04/03/git%E7%9A%84%E4%B8%80%E4%B8%AA%E6%8A%A5%E9%94%99%E6%B5%8B%E8%AF%95/" title="2018&#x2F;04&#x2F;03&#x2F;git的一个报错测试&#x2F;">git的一个报错</a>
         </li>
     </ul>
   </div>
@@ -379,7 +379,7 @@
 <p>　　修改原型的时候有一个需要注意的地方，还记得前面说到给原型添加属性有两种方法，那么我们如果在修改原型的时候使用第二种方法，会出现什么呢？</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//使用赋值的方式，尝试同上面一样去修改sayHi和创建sayBye</span></span><br><span class="line">Girl.prototype = &#123;</span><br><span class="line">    <span class="keyword">constructor</span> : Girl,</span><br><span class="line">    sayHi : function()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;Hello~&quot;</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    sayBye : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&quot;Bye~&quot;</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//再来调用一下之前创建的rose</span></span><br><span class="line">rose.sayHi(); <span class="comment">//Hi~</span></span><br><span class="line">rose.sayBye(); <span class="comment">//TypeError: rose.sayBye is not a function</span></span><br><span class="line"><span class="comment">//创建个新的实例试试</span></span><br><span class="line"><span class="keyword">var</span> angela = <span class="keyword">new</span> Girl(<span class="string">&quot;angela&quot;</span>,<span class="number">16</span>); </span><br><span class="line">angela.sayBye(); <span class="comment">//Bye~</span></span><br><span class="line">angela.sayHi(); <span class="comment">//Hello~</span></span><br><span class="line"><span class="built_in">console</span>.log(angela.sex) <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
 <p>　　如果使用赋值的方式去修改原型，此时构造函数的原型对象所指向的就是另一个内存空间，而在此之前所建立的实例仍旧指向原来的空间。所以就会出现上面的结果了。</p>
-<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>　　还是继续使用前文的例子吧，我们回到修改原型之前。使用控制台看下实例的结构：<br>　　<code>console.log(rose);</code><br>　　<img data-src="https://wx1.sinaimg.cn/mw690/61b81d32gy1fob4pzix2ej20ab03udfs.jpg"/><br>　　发现一个长得有点像 prototype 的属性名，在里面看到了定义在构造器原型里面的属性和方法。<br>　　这个 <code>__proto__</code> 是所有<strong>对象</strong>都有的一个属性，指向其构造函数的原型属性 prototype 对象。前文提到<strong>函数</strong>也是一种对象，那么构造器函数也是有 _<em>proto_</em> 的，它指向的是什么呢？就是函数的构造器 Function 的 prototype 了。然而对于 <strong>prototype</strong> 来讲，其本身是一个对象，所以也是有 _<em>proto_</em> 的，还记得最初讲原型的时候说过原型的 typeof 输出是 <code>Object</code>，原型的 _<em>proto_</em> 所指向的就是 Object 的 prototype。最终 Object.prototype 的 _<em>proto_</em> 属性指向了 null。<br>　　这样一层一层走到<strong>Object</strong>，就构成了一条由 <code>__proto__</code> 连接起来的原型链。<br>　　来看一张图片理解消化一下（<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/34183746/answer/58155878">图片来源</a>）：<br>　　<img data-src="https://wx1.sinaimg.cn/mw690/61b81d32gy1fob9ytrhbzj20eg0gaabg.jpg"/><br>　　原型链有什么作用呢，当对象在调用某个属性时，如果自身属性里没有找到，JS 就会遍历其原型链，一直往 Object 寻找，最先在哪儿找到，就返回谁（也就是同名情况下的优先级），如果到最后都没有找到，就会返回 undefined。</p>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>　　还是继续使用前文的例子吧，我们回到修改原型之前。使用控制台看下实例的结构：<br>　　<code>console.log(rose);</code><br>　　<img data-src="https://flower-1254284353.cos-website.ap-chengdu.myqcloud.com/blog/2021-01-13-145408.jpg"/><br>　　发现一个长得有点像 prototype 的属性名，在里面看到了定义在构造器原型里面的属性和方法。<br>　　这个 <code>__proto__</code> 是所有<strong>对象</strong>都有的一个属性，指向其构造函数的原型属性 prototype 对象。前文提到<strong>函数</strong>也是一种对象，那么构造器函数也是有 _<em>proto_</em> 的，它指向的是什么呢？就是函数的构造器 Function 的 prototype 了。然而对于 <strong>prototype</strong> 来讲，其本身是一个对象，所以也是有 _<em>proto_</em> 的，还记得最初讲原型的时候说过原型的 typeof 输出是 <code>Object</code>，原型的 _<em>proto_</em> 所指向的就是 Object 的 prototype。最终 Object.prototype 的 _<em>proto_</em> 属性指向了 null。<br>　　这样一层一层走到<strong>Object</strong>，就构成了一条由 <code>__proto__</code> 连接起来的原型链。<br>　　来看一张图片理解消化一下（<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/34183746/answer/58155878">图片来源</a>）：<br>　　<img data-src="https://flower-1254284353.cos-website.ap-chengdu.myqcloud.com/blog/2021-01-13-145439.jpg"/><br>　　原型链有什么作用呢，当对象在调用某个属性时，如果自身属性里没有找到，JS 就会遍历其原型链，一直往 Object 寻找，最先在哪儿找到，就返回谁（也就是同名情况下的优先级），如果到最后都没有找到，就会返回 undefined。</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">Girl.prototype.attr = <span class="string">&quot;attr&quot;</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.attr = <span class="string">&quot;attr1&quot;</span>;</span><br><span class="line"><span class="built_in">Function</span>.prototype.attr = <span class="string">&quot;attr2&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(rose.attr); <span class="comment">//attr</span></span><br><span class="line"><span class="built_in">console</span>.log(rose.constructor.attr); <span class="comment">//attr2</span></span><br></pre></td></tr></table></figure>
 <hr>
 <h3 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h3><h5 id="辅助内置方法："><a href="#辅助内置方法：" class="headerlink" title="辅助内置方法："></a>辅助内置方法：</h5><ul>
@@ -482,7 +482,7 @@
 <div class="copyright">
   
   &copy; 2018.01.26 – 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
