@@ -4,17 +4,17 @@
 
 # Site
 title: Una｜blog & journal
-subtitle: And you it`s only seeds.
-description: A boring girl.
-author: Una
-avatar: https://ww3.sinaimg.cn/mw690/61b81d32jw8f3mnx95v3dj2050050t8q.jpg
+subtitle: Live in the moment.
+description: Live in the moment.
+author: 刺猬
+avatar: https://flower-1254284353.cos.ap-chengdu.myqcloud.com/blog%2F2021-01-13-61b81d32jw8f3mnx95v3dj2050050t8q.jpg
 #avatar: /avatar.jpg
 language: zh-Hans
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'https://yoursite.com/child' and root as '/child/'
-url: https://unangela.com
+url: https://unangela.github.io/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -55,7 +55,7 @@ highlight:
 index_generator:
   path: ''
   per_page: 10
-  order_by: -date
+  order_by: date
   
 # Category & Tag
 default_category: uncategorized

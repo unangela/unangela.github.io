@@ -4,7 +4,7 @@ date: 2018-05-21 09:02:52
 tags: Photography
 categories: 摄影
 ---
-<img src="https://wx1.sinaimg.cn/mw690/61b81d32gy1frj0ho3m0sj21dc0wwwyq.jpg" /><!--more-->
+<img src="https://flower-1254284353.cos.ap-chengdu.myqcloud.com/blog%2FvTjiYZuUGbySHWQ.png" /><!--more-->
 这是拿到相机装好镜头随手拍下的第一张照片，直出原图，很满意的颜色，不愧是富士。
 虽然很早就接触过相机，但一直都是AUTO模式走天下，还是想好好学习一下拍照这件事儿，最近对后期图像也是迷之热爱。
 设备：fujifilmX-T20 配 15-45mm 镜头
@@ -26,9 +26,6 @@ categories: 摄影
 比1/250秒快的，就是高速快门
 比1/2000秒快的，就是很高的高速快门了
 - 快门速度 B（B 门）和 T（T 门）可进行长时间曝光
-
-#### 感光度
-
 
 #### 拍摄模式
 - ` P模式（程序曝光）` —— 由相机选择快门速度和光圈以获得理想曝光。也可切换快门和光圈的其他组合值而不改变曝光。
