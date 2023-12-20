@@ -140,9 +140,9 @@ site_state: true
 # Key is the link label showing to end users.
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
-  GitHub: https://github.com/unangela || fab fa-github
+  #GitHub: https://github.com/unangela || fab fa-github
   E-Mail: https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=GWBudSAqKVloaDd6dnQ || fa fa-at
-  #Weibo: https://weibo.com/yingwanli || fab fa-weibo
+  Weibo: https://weibo.com/yingwanli || fab fa-weibo
   #Google: https://plus.google.com/yourname || fab fa-google
   #Twitter: https://twitter.com/yourname || fab fa-twitter
   #FB Page: https://www.facebook.com/yourname || fab fa-facebook
@@ -298,8 +298,8 @@ related_posts:
 # Easily browse and edit blog source code online.
 post_edit:
   enable: false
-  url: https://github.com/user-name/repo-name/tree/branch-name/subdirectory-name/ # Link for view source
-  #url: https://github.com/user-name/repo-name/edit/branch-name/subdirectory-name/ # Link for fork & edit
+  #url: https://github.com/unangela/unangela.github.io/tree/bak/source/ # Link for view source
+  url: https://github.com/unangela/unangela.github.io/edit/bak/source/ # Link for fork & edit
 
 # Show previous post and next post in post footer if exists
 # Available values: left | right | false
