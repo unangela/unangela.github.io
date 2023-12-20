@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico">
+  <link rel="mask-icon" href="/images/blogging.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Iosevka:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"unangela.github.io","root":"/","scheme":"Pisces","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"livere","storage":true,"lazyload":false,"nav":null,"activeClass":"livere"},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="现在很多运营活动喜欢抽奖，遇到一种就来记录一种，生产环境下概率最好还是从后台给，这里代码都写在客户端是用作思考学习。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="抽奖抽奖抽奖">
+<meta property="og:url" content="https://unangela.github.io/2018/02/01/%E6%8A%BD%E5%A5%96%E8%BD%AC%E7%9B%98H5%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:site_name" content="Una｜blog &amp; journal">
+<meta property="og:description" content="现在很多运营活动喜欢抽奖，遇到一种就来记录一种，生产环境下概率最好还是从后台给，这里代码都写在客户端是用作思考学习。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-02-01T01:51:21.000Z">
+<meta property="article:modified_time" content="2023-12-15T09:04:03.341Z">
+<meta property="article:author" content="刺猬">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://unangela.github.io/2018/02/01/%E6%8A%BD%E5%A5%96%E8%BD%AC%E7%9B%98H5%E5%AE%9E%E7%8E%B0/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>抽奖抽奖抽奖 | Una｜blog & journal</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="https://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="https://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Una｜blog & journal</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Live in the moment.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-coffee fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9C%86%E5%BD%A2%E8%BD%AC%E7%9B%98"><span class="nav-number">1.</span> <span class="nav-text">一、圆形转盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%B9%9D%E5%AE%AB%E6%A0%BC%E8%BD%AC%E7%9B%98"><span class="nav-number">2.</span> <span class="nav-text">二、九宫格转盘</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="https://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="刺猬"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">刺猬</p>
+  <div class="site-description" itemprop="description">Live in the moment.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=GWBudSAqKVloaDd6dnQ" title="E-Mail → https:&#x2F;&#x2F;mail.qq.com&#x2F;cgi-bin&#x2F;qm_share?t&#x3D;qm_mailme&amp;email&#x3D;GWBudSAqKVloaDd6dnQ" rel="noopener" target="_blank"><i class="fa fa-at fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yingwanli" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yingwanli" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+  </div>
+
+
+
+  <div class="links-of-recent-posts motion-element">
+    <div class="links-of-recent-posts-title">
+      <i class="fa fa-history fa-fw"></i>
+      最近文章
+    </div>
+    <ul class="links-of-recent-posts-list">
+        <li class="links-of-recent-posts-item">
+          <a href="/2020/11/07/%E4%BD%BF%E7%94%A8-ffmpeg-%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F/" title="2020&#x2F;11&#x2F;07&#x2F;使用-ffmpeg-批量转换视频格式&#x2F;">使用 ffmpeg 批量转换视频格式</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2020/10/19/Hexo%E6%96%87%E6%9C%AC%E6%A0%B7%E5%BC%8F%E5%A4%87%E5%BF%98/" title="2020&#x2F;10&#x2F;19&#x2F;Hexo文本样式备忘&#x2F;">Hexo 文本样式备忘</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2018/08/08/%E4%BD%BF%E7%94%A8python%E6%89%B9%E9%87%8F%E5%B0%86svg%E5%9B%BE%E8%BD%AC%E5%8C%96%E6%88%90png%E6%A0%BC%E5%BC%8F/" title="2018&#x2F;08&#x2F;08&#x2F;使用python批量将svg图转化成png格式&#x2F;">使用python批量将svg图转化成png格式</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2018/05/21/photography/" title="2018&#x2F;05&#x2F;21&#x2F;photography&#x2F;">好好拍照好好生活</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2018/05/08/landscape%E7%9A%84%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" title="2018&#x2F;05&#x2F;08&#x2F;landscape的主题优化&#x2F;">Hexo默认主题landscape优化</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2018/04/18/APP%E7%88%B1%E7%94%A8%E6%8E%A8%E8%8D%90-Una/" title="2018&#x2F;04&#x2F;18&#x2F;APP爱用推荐-Una&#x2F;">小碗里APP爱用推荐</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2018/04/03/git%E7%9A%84%E4%B8%80%E4%B8%AA%E6%8A%A5%E9%94%99%E6%B5%8B%E8%AF%95/" title="2018&#x2F;04&#x2F;03&#x2F;git的一个报错测试&#x2F;">git的一个报错</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2018/04/03/%E4%BA%BA%E7%94%9F%E4%B8%AD%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8C%82%E5%8F%B7/" title="2018&#x2F;04&#x2F;03&#x2F;人生中第一次挂号&#x2F;">人生中第一次挂号</a>
+        </li>
+    </ul>
+  </div>
+
+
+<div>
+  <iframe id="iframer" frameborder="no" border="0" marginwidth="0" marginheight="0" width=220 height=52 src=""></iframe>
+</div>
+<script language='javascript' type='text/javascript'>
+  window.onload = function(){
+      setTimeout(function () {
+          var iframer = document.getElementById("iframer");
+          iframer.setAttribute("src","//music.163.com/outchain/player?type=2&id=526656&auto=1&height=32");
+      }, 1000);
+  }
+</script>
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="https://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://unangela.github.io/2018/02/01/%E6%8A%BD%E5%A5%96%E8%BD%AC%E7%9B%98H5%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="https://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="刺猬">
+      <meta itemprop="description" content="Live in the moment.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+      <meta itemprop="name" content="Una｜blog & journal">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          抽奖抽奖抽奖
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-02-01 09:51:21" itemprop="dateCreated datePublished" datetime="2018-02-01T09:51:21+08:00">2018-02-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>　　现在很多运营活动喜欢抽奖，遇到一种就来记录一种，生产环境下概率最好还是从后台给，这里代码都写在客户端是用作思考学习。<span id="more"></span></p>
+<h4 id="一、圆形转盘"><a href="#一、圆形转盘" class="headerlink" title="一、圆形转盘"></a>一、圆形转盘</h4><p>布局：背景图、按钮、指针（也有用 <code>canvas</code> 自己画的，但是感觉工作上并不实用）<br>逻辑：随机一个结果，得到其位置的度数，利用 <code>rotate</code> 控制背景图片旋转到该度数，<code>duration</code> 控制旋转时间，<code>setTimeout</code> 来控制公告弹出的时间<br>概率：权重，使用 <code>Math.floor(Math.random()*sum + 1)</code> 取得随机整数<br>重要变量：  </p>
+<ul>
+<li><code>angles</code> 旋转角度，度数控制停留的位置  </li>
+<li><code>rotNum</code> 旋转基数，转盘旋转一圈后并不是回到原点，下次改变角度的时候要算上之前旋转过的度数，旋转基数在转盘转过一圈的时候+1</li>
+</ul>
+<p>参考代码段：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--HTMl--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;bkgd&quot;</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;imgs&quot;</span> <span class="attr">id</span>=<span class="string">&quot;imgs&quot;</span> <span class="attr">src</span>=<span class="string">&quot;images/disc-rotate.jpg&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;arrow&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;lot-btn&quot;</span> <span class="attr">id</span>=<span class="string">&quot;lot-btn&quot;</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//javascript</span></span><br><span class="line">$(<span class="string">&quot;#lot-btn&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">if</span> (clickNum &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">		clickNum = clickNum-<span class="number">1</span>; <span class="comment">//可抽奖次数减一</span></span><br><span class="line">		rotNum ++; <span class="comment">//旋转基数加一</span></span><br><span class="line">		<span class="title function_">runCup</span>(); <span class="comment">//转盘旋转</span></span><br><span class="line">		$(<span class="string">&#x27;#lot-btn&#x27;</span>).<span class="title function_">attr</span>(<span class="string">&quot;disabled&quot;</span>, <span class="literal">true</span>);</span><br><span class="line">		<span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">			<span class="title function_">result_confirm</span>(clickNum)</span><br><span class="line">			<span class="comment">//window.confirm(notice + &quot;\n\n若不满意该结果，您有一次重新抽奖的机会，是否重抽？&quot; ); </span></span><br><span class="line">			<span class="title function_">alert</span>(notice);</span><br><span class="line">			$(<span class="string">&quot;#lot-btn&quot;</span>).<span class="title function_">attr</span>(<span class="string">&quot;disabled&quot;</span>, <span class="literal">false</span>);</span><br><span class="line">		&#125;,<span class="number">1800</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&quot;亲，抽奖次数已用光！&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//转盘旋转，将各个变量结果赋值</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">runCup</span>(<span class="params"></span>)&#123;</span><br><span class="line">	resultinfo = <span class="title function_">getResult</span>();</span><br><span class="line">	notice = <span class="string">&#x27;恭喜获得：&#x27;</span> + resultinfo;</span><br><span class="line">	angles = rotNum*<span class="number">1080</span> + <span class="title function_">getAngles</span>(resultinfo);</span><br><span class="line"></span><br><span class="line">	$(<span class="string">&quot;#imgs&quot;</span>).<span class="title function_">rotate</span>(&#123;</span><br><span class="line">		<span class="attr">animateTo</span>: angles,</span><br><span class="line">		<span class="attr">duration</span>: <span class="number">1800</span></span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//随机一个结果用以展示</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getResult</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> sum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">var</span> rand = <span class="number">0</span>;	<span class="comment">//随机数</span></span><br><span class="line">	<span class="keyword">var</span> result = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//取得权重总数</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; data.<span class="property">length</span>; i++) &#123;</span><br><span class="line">		sum += data[i].<span class="property">probability</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>( sum );</span><br><span class="line"></span><br><span class="line">	<span class="comment">//从总数里面随机一个数，并对应输入随机的值</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; data.<span class="property">length</span>; i++) &#123;</span><br><span class="line">		rand = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>()*sum + <span class="number">1</span>);	</span><br><span class="line">		<span class="keyword">if</span> (data[i].<span class="property">probability</span> &gt;= rand) &#123;</span><br><span class="line">			result = data[i].<span class="property">info</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		sum -= data[i].<span class="property">probability</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>( result );</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获得旋转结果对应的旋转度数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getAngles</span>(<span class="params">resultinfo</span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> num</span><br><span class="line">	<span class="comment">//查找结果的位置</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; data.<span class="property">length</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>( resultinfo == data[i].<span class="property">info</span> )&#123;</span><br><span class="line">			num = i;</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>( <span class="string">&quot;不相等，继续循环&quot;</span> );</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>( num );</span><br><span class="line">	<span class="keyword">if</span>( num == <span class="number">0</span> )&#123;angles = <span class="number">1825</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>( num == <span class="number">1</span> )&#123;angles = <span class="number">1775</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>( num == <span class="number">2</span> )&#123;angles = <span class="number">1725</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>( num == <span class="number">3</span> )&#123;angles = <span class="number">1675</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>( num == <span class="number">4</span> )&#123;angles = <span class="number">1625</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>( num == <span class="number">5</span> )&#123;angles = <span class="number">1925</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>( num == <span class="number">6</span> )&#123;angles = <span class="number">1875</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;<span class="variable language_">console</span>.<span class="title function_">log</span>( <span class="string">&quot;error&quot;</span> );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> angles;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="二、九宫格转盘"><a href="#二、九宫格转盘" class="headerlink" title="二、九宫格转盘"></a>二、九宫格转盘</h4><p>布局：背景图、抽奖的元素、使用表格把各元素排好<br>旋转方法：使用 <code>setTimeout</code> 重复执行改变单元格 css 的代码，模拟旋转，停止旋转时用 <code>clearTimeout</code> 清除设置<br>停止旋转：<code>clearTimeout(id_of_settimeout)</code><br>概率：同上，权重<br>重要变量：  </p>
+<ul>
+<li><code>index:-1</code> 当前位置，控制 css 变化，转动一次自增 1</li>
+<li><code>count:0</code> 总共有多少个位置，控制 index 置 0 的时机</li>
+<li><code>speed</code> 转动速度，数字越小，转动越快，setTimeout 的参数</li>
+<li><code>times:0</code> 转动次数，可根据这个值的区间来设置 speed，让速度有变化</li>
+<li><code>cycle:30</code> 转动基本次数：转动一圈需要至少需要的转动次数</li>
+<li><code>prize:-1</code> 中奖位置，当 index&#x3D;prize 且旋转次数满足的时候，停止转动</li>
+</ul>
+<p>参考代码段： </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//javascript</span></span><br><span class="line"><span class="keyword">var</span> lottery=&#123;  </span><br><span class="line">	<span class="attr">index</span>:-<span class="number">1</span>,	<span class="comment">//当前转动到哪个位置，起点位置</span></span><br><span class="line">	<span class="attr">count</span>:<span class="number">0</span>,	<span class="comment">//总共有多少个位置</span></span><br><span class="line">	<span class="attr">timer</span>:<span class="number">0</span>,	<span class="comment">//setTimeout的ID，用clearTimeout清除</span></span><br><span class="line">	<span class="attr">speed</span>:<span class="number">20</span>,	<span class="comment">//初始转动速度，数字越小，转动越快</span></span><br><span class="line">	<span class="attr">times</span>:<span class="number">0</span>,	<span class="comment">//转动次数</span></span><br><span class="line">	<span class="attr">cycle</span>:<span class="number">30</span>,	<span class="comment">//转动基本次数：转动一圈需要至少需要的转动次数</span></span><br><span class="line">	<span class="attr">prize</span>:-<span class="number">1</span>,	<span class="comment">//中奖位置</span></span><br><span class="line"></span><br><span class="line">	<span class="attr">init</span>:<span class="keyword">function</span>(<span class="params">id</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span> ($(<span class="string">&quot;#&quot;</span>+id).<span class="title function_">find</span>(<span class="string">&quot;.lottery-unit&quot;</span>).<span class="property">length</span>&gt;<span class="number">0</span>) &#123;</span><br><span class="line">			$lottery = $(<span class="string">&quot;#&quot;</span>+id);</span><br><span class="line">			$units = $lottery.<span class="title function_">find</span>(<span class="string">&quot;.lottery-unit&quot;</span>);</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">obj</span> = $lottery;</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">count</span> = $units.<span class="property">length</span>;</span><br><span class="line">			$lottery.<span class="title function_">find</span>(<span class="string">&quot;.lottery-unit-&quot;</span>+<span class="variable language_">this</span>.<span class="property">index</span>).<span class="title function_">addClass</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">	<span class="attr">roll</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">var</span> index = <span class="variable language_">this</span>.<span class="property">index</span>;</span><br><span class="line">		<span class="keyword">var</span> count = <span class="variable language_">this</span>.<span class="property">count</span>;</span><br><span class="line">		<span class="keyword">var</span> lottery = <span class="variable language_">this</span>.<span class="property">obj</span>;</span><br><span class="line">		$(lottery).<span class="title function_">find</span>(<span class="string">&quot;.lottery-unit-&quot;</span>+index).<span class="title function_">removeClass</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">		index += <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (index&gt;count-<span class="number">1</span>) &#123;</span><br><span class="line">			index = <span class="number">0</span>;</span><br><span class="line">		&#125;;</span><br><span class="line">		$(lottery).<span class="title function_">find</span>(<span class="string">&quot;.lottery-unit-&quot;</span>+index).<span class="title function_">addClass</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">index</span>=index;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">roller</span>(<span class="params"></span>)&#123;</span><br><span class="line">	lottery.<span class="property">times</span> += <span class="number">1</span>;</span><br><span class="line">	lottery.<span class="title function_">roll</span>();</span><br><span class="line">	<span class="comment">//var index = Math.random()*(lottery.count)|0;随机结果，这里要修改，采用圆形转盘的方式</span></span><br><span class="line">	lottery.<span class="property">prize</span> = index;</span><br><span class="line">	<span class="keyword">if</span> (lottery.<span class="property">times</span> &gt; lottery.<span class="property">cycle</span>+<span class="number">10</span> &amp;&amp; lottery.<span class="property">prize</span>==lottery.<span class="property">index</span>) &#123;	<span class="comment">//转动次数大于基本次数的时候，停止转动</span></span><br><span class="line">		<span class="built_in">clearTimeout</span>(lottery.<span class="property">timer</span>);  <span class="comment">//清除延迟执行，停止转动</span></span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;结果：&quot;</span>+lottery.<span class="property">prize</span>+<span class="string">&quot;，转动次数：&quot;</span>+lottery.<span class="property">times</span>+<span class="string">&quot;，转动速度：&quot;</span>+lottery.<span class="property">speed</span>);</span><br><span class="line">		lottery.<span class="property">times</span>=<span class="number">0</span>;	<span class="comment">//重置次数</span></span><br><span class="line">		click=<span class="literal">false</span>;	<span class="comment">//点击状态改变</span></span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (lottery.<span class="property">times</span>&lt;lottery.<span class="property">cycle</span>) &#123;</span><br><span class="line">			lottery.<span class="property">speed</span> -= <span class="number">10</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(lottery.<span class="property">times</span>==lottery.<span class="property">cycle</span>) &#123;	<span class="comment">//旋转到基础次数的时候，进行抽奖（这里我把抽奖时机提前了，这个代码注释掉了）</span></span><br><span class="line">			<span class="comment">//var index = Math.random()*(lottery.count)|0;	//平均随机</span></span><br><span class="line">			<span class="comment">//lottery.prize = index;</span></span><br><span class="line">			lottery.<span class="property">speed</span> +=<span class="number">10</span>;	</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">if</span> (lottery.<span class="property">times</span> &gt; lottery.<span class="property">cycle</span>+<span class="number">10</span> &amp;&amp; ((lottery.<span class="property">prize</span>==<span class="number">0</span> &amp;&amp; lottery.<span class="property">index</span>==<span class="number">7</span>) || lottery.<span class="property">prize</span>==lottery.<span class="property">index</span>+<span class="number">1</span>)) &#123;</span><br><span class="line">				lottery.<span class="property">speed</span> += <span class="number">110</span>;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				lottery.<span class="property">speed</span> += <span class="number">20</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (lottery.<span class="property">speed</span>&lt;<span class="number">40</span>) &#123;</span><br><span class="line">			lottery.<span class="property">speed</span>=<span class="number">40</span>;</span><br><span class="line">		&#125;;</span><br><span class="line">		lottery.<span class="property">timer</span> = <span class="built_in">setTimeout</span>(roller,lottery.<span class="property">speed</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<!--
+#### 三、老虎机抽奖
+待补充...
+-->
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/alipay.png" alt="刺猬 Alipay">
+        <span>Alipay</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/HTML/" rel="tag"># HTML</a>
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/01/30/%E4%BD%BF%E7%94%A8GitHub-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%AE%B0%E5%BD%95/" rel="prev" title="使用GitHub+Hexo搭建博客的记录">
+                  <i class="fa fa-chevron-left"></i> 使用GitHub+Hexo搭建博客的记录
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2018/02/03/javascript%E7%BB%83%E4%B9%A0/" rel="next" title="javascript小练习">
+                  javascript小练习 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzY5MS8xMDI0Ng=="></div>
+    <style>
+        #taboola-livere { display: none;}
+    </style>
+  </div>
+
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 2018.01.26 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刺猬</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f894568082f83bf" async="async"></script>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="200" alpha="0.4" zIndex="-1" src="//cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script data-pjax>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.0/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+
+
+  <script>
+    NProgress.configure({
+      showSpinner: false
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments('#lv-container', () => {
+  window.livereOptions = {
+    refer: "2018/02/01/抽奖转盘H5实现/"
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+    </div>
+</body>
+</html>
