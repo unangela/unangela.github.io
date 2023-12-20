@@ -1,6 +1,6 @@
 ---
 title: javascript小练习
-date: 2018-02-03 15：56：12
+date: 2018-02-03 15:56:12
 tags: JavaScript
 categories: 编程
 ---
@@ -95,4 +95,3 @@ getLength("aaabbaaac");
 ```
 
 ---
-###   
