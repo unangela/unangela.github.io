@@ -4,7 +4,7 @@ date: 2018-02-10 15:41:59
 tags: JavaScript
 categories: 编程
 ---
-　　好记性不如烂笔头，学习笔记的整理，方便以后回顾。如果文章内有什么理解得不对的地方，欢迎在评论指正，共同学习进步。<!--more--> 
+好记性不如烂笔头，学习笔记的整理，方便以后回顾。如果文章内有什么理解得不对的地方，欢迎在评论指正，共同学习进步。<!--more--> 
 
 ---
 ### 函数
@@ -37,8 +37,9 @@ var funExpression = function(){
 
 funExpression();    // Expression
 ```
+
 ### 函数对象
-　　与其他对象一致，函数对象中也有名为 `constructor` 的属性，其引用的就是 `Function()` 这个构造函数。它是所有函数对象的基础，一个小插曲，Object 是所有对象（包括函数对象）的基础，在 JavaScript 中，任何一个对象都是 Object 的实例，因此，可以修改 Object 这个类型来让所有的对象具有一些通用的属性和方法，修改 Object 类型就可以通过 `prototype` 来完成的:
+与其他对象一致，函数对象中也有名为 `constructor` 的属性，其引用的就是 `Function()` 这个构造函数。它是所有函数对象的基础，一个小插曲，Object 是所有对象（包括函数对象）的基础，在 JavaScript 中，任何一个对象都是 Object 的实例，因此，可以修改 Object 这个类型来让所有的对象具有一些通用的属性和方法，修改 Object 类型就可以通过 `prototype` 来完成的:
 ```javascript
 Object.prototype.getType = function(e){ 
   return typeof(e); 
@@ -55,9 +56,11 @@ console.log(a1.getType(a1));
 console.log(f1.getType(function f2(){})); 
 console.log(x.getType("123")); 
 ```
+
 >prototype 是使用非常广泛的函数属性，当函数作为构造器使用的时候，prototype 就会发挥其作用，由该构造器函数创建的所有对象中都会含有一个该 prototype 属性的引用，并可以当做自身的属性来使用。js 创建对象的时候有一个 `__proto__` 内置属性，用于指向创建它的函数对象。
 
-　　也和其他对象一致，函数也有自己的对象方法。比如，JS 中的每个函数都有 `call()` 和 `apply()` 两个方法，它们可以让一个对象去“借用”另一个对象的方法并为己所用。
+也和其他对象一致，函数也有自己的对象方法。比如，JS 中的每个函数都有 `call()` 和 `apply()` 两个方法，它们可以让一个对象去“借用”另一个对象的方法并为己所用。
+
 ```javascript
 //我们先创建了一个对象A，它有一个名字和打招呼的方法
 var A = {
@@ -76,18 +79,20 @@ var B = {
 console.log(A.say.call(B,"A"));
 console.log(A.say.apply(B,["A"]));
 ```
-　　`call()` 和 `apply()` 的区别就是后面的参数形式。需要传递多个参数的时候 call 使用逗号隔开，例 `X.fuc.call(Y,"参数1","参数2","参数3")`，apply 则是需要把参数放到一个数组里面，如 `X.fuc.apply(Y,["参数1","参数2","参数3"])` 。这两种写法是等效的。
 
----
+`call()` 和 `apply()` 的区别就是后面的参数形式。需要传递多个参数的时候 call 使用逗号隔开，例 `X.fuc.call(Y,"参数1","参数2","参数3")`，apply 则是需要把参数放到一个数组里面，如 `X.fuc.apply(Y,["参数1","参数2","参数3"])` 。这两种写法是等效的。
+
 ### 原型
-　　如前文说的那样，我们知道了在函数被创建的时候就有一些默认的属性，这些属性中就包括 prototype ，它的初始值是一个空的对象。
+如前文说的那样，我们知道了在函数被创建的时候就有一些默认的属性，这些属性中就包括 prototype ，它的初始值是一个空的对象。
+
 ```javascript
 function fx(a,b){
     return a+b;
 }
 console.log(typeof fx.prototype) //Object
 ```
-　　我们可以为它添加新的属性和方法，它们不会对自己的函数本身造成影响：
+
+我们可以为它添加新的属性和方法，它们不会对自己的函数本身造成影响：
 ```javascript
 //方法一：通过改变对象的属性来添加
 fx.prototype.type = "Math";
@@ -105,7 +110,8 @@ fx.prototype = {
 console.log(fx.info()) //TypeError: fx.info is not a function
 console.log(fx.prototype.info()) //My type is Math
 ```
-　　方法二看起来要简单方便一点，但在使用的时候要注意，赋值的方式其实是改变了 prototype 本身的性质。一个函数在被创建时，它的 prototype 属性也被创建，且该原型对象的 constructor属性指向该函数。当使用一个新的对象改写原型对象时，其 constructor 属性将被置为泛用对象Object。为了避免这一点，需要在改写原型对象的时候手动重置 constructor。
+
+方法二看起来要简单方便一点，但在使用的时候要注意，赋值的方式其实是改变了 prototype 本身的性质。一个函数在被创建时，它的 prototype 属性也被创建，且该原型对象的 constructor属性指向该函数。当使用一个新的对象改写原型对象时，其 constructor 属性将被置为泛用对象Object。为了避免这一点，需要在改写原型对象的时候手动重置 constructor。
 ```javascript
 fx.prototype = {
     constructor : fx,
@@ -115,8 +121,9 @@ fx.prototype = {
     },
 }
 ```
+
 ### 原型使用
-　　原型属性使我们共享方法方便了很多，当我们创建构造器的时候，我们将可以共享的属性和方法放到原型属性里面，这样在每次使用这个构造器创建实例的时候，就不会重新去声明这些东西，但我们可以通过引用找到这些东西并调用：
+原型属性使我们共享方法方便了很多，当我们创建构造器的时候，我们将可以共享的属性和方法放到原型属性里面，这样在每次使用这个构造器创建实例的时候，就不会重新去声明这些东西，但我们可以通过引用找到这些东西并调用：
 ```javascript
 //创建构造器函数
 function Girl(name,age){
@@ -132,7 +139,8 @@ var rose = new Girl("rose",5);
 console.log(rose.sex); //female
 rose.sayHi(); //Hi~
 ```
-　　由于在实例化的时候，并没有重新声明，所以原型具有“实时性”，我们随时可以修改原型属性，这些修改会影响到由该构造器创建的所有对象，包括会影响在修改之前就已经创建了的对象：
+
+由于在实例化的时候，并没有重新声明，所以原型具有“实时性”，我们随时可以修改原型属性，这些修改会影响到由该构造器创建的所有对象，包括会影响在修改之前就已经创建了的对象：
 ```javascript
 //修改 Girl
 Girl.prototype.sayHi = function(){
@@ -149,7 +157,8 @@ var angela = new Girl("angela",16);
 angela.sayBye(); //Bye~
 angela.sayHi(); //Hello~
 ```
-　　修改原型的时候有一个需要注意的地方，还记得前面说到给原型添加属性有两种方法，那么我们如果在修改原型的时候使用第二种方法，会出现什么呢？
+
+修改原型的时候有一个需要注意的地方，还记得前面说到给原型添加属性有两种方法，那么我们如果在修改原型的时候使用第二种方法，会出现什么呢？
 ```javascript
 //使用赋值的方式，尝试同上面一样去修改sayHi和创建sayBye
 Girl.prototype = {
@@ -170,7 +179,9 @@ angela.sayBye(); //Bye~
 angela.sayHi(); //Hello~
 console.log(angela.sex) //undefined
 ```
-　　如果使用赋值的方式去修改原型，此时构造函数的原型对象所指向的就是另一个内存空间，而在此之前所建立的实例仍旧指向原来的空间。所以就会出现上面的结果了。
+
+如果使用赋值的方式去修改原型，此时构造函数的原型对象所指向的就是另一个内存空间，而在此之前所建立的实例仍旧指向原来的空间。所以就会出现上面的结果了。
+
 ### 原型链
 　　还是继续使用前文的例子吧，我们回到修改原型之前。使用控制台看下实例的结构：  
 　　`console.log(rose);`
@@ -189,6 +200,7 @@ Function.prototype.attr = "attr2";
 console.log(rose.attr); //attr
 console.log(rose.constructor.attr); //attr2
 ```
+
 ---
 ### 附录
 ##### 辅助内置方法：
